@@ -1,0 +1,85 @@
+/* Actual Page */
+#page {
+    display: flex;
+    color: #192039;
+}
+
+/* Patients */
+#patients {
+    margin: 54px 5px 5px 5px;
+    padding: 15px 60px 15px 60px;
+    width: 80%;
+    float: left;
+    font-size: 25px;
+    color: #192039;
+}
+
+.patient-instance {
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    font-size: 20px;
+    padding: 7px 10px 7px 10px;
+    margin: 2px 10px 2px 10px;
+    border-bottom: 2px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+.name {
+    color: #192039;
+}
+
+.age {
+    float: right;
+    font-style: italic;
+    padding-right: 3px;
+}
+
+.surgical {
+    border-bottom: 3px solid #C72939;
+}
+
+.medical {
+    border-bottom: 3px solid #157F74;
+}
+
+.checkup {
+    border-bottom: 3px solid #5D2363;
+}
+
+/* Legend */
+#legend {
+    margin: 54px 5px 5px 5px;
+    padding: 15px;
+    width: 20%;
+    float: right;
+    font-size: 25px;
+    color: #192039;
+}
+
+#list {
+    list-style-type: none;
+    margin: 5px 0 5px 0;
+    font-size: 20px;
+}
+
+#surgical {
+    background-color: #C72939;
+    
+}
+
+#medical {
+    background-color: #157F74;
+}
+
+#checkup {
+    background-color: #5D2363;
+}
+
+.dot {
+    margin: 0 15px 0 -30px;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    border:3px solid #192039;    
+}
