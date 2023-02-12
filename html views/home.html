@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="index-style.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <!--ADD JS CODE HERE-->
+    <script type="text/javascript" src=""></script>
+</head>
+<body>
+    <div class="fixed">
+        <!-- HEADER PARTIAL -->
+        <div id="top-nav-bar" style="z-index: 9">
+            <a id="emr" href="home.html">Electronic Medical Record</a>
+            <ul id="top-nav">
+                <form action="/searchPatients" method="POST" id="searchbar">
+                    <input type="text" placeholder="Search..." name="search" id="search">
+                    <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                </form>
+            </ul>
+        </div>
+        <!-- END HEADER PARTIAL -->
+    </div>
+
+    <div id="page">
+        <div id="patients">
+            <!--INSERT FOR LOOP TO GENERATE LETTERS OF ALPHABET-->
+            <!--I'll put a sample for A-->
+            A
+                <!--INSERT NESTED LOOP TO GENERATE THE PATIENTS UNDER THE LETTER-->
+                    <!--PATIENT PARTIAL-->
+                    <div class="patient-instance checkup"> <!--class changes depending on the latest consult-->
+                        <a href="#" class="name">
+                            <!--lastName, firstName middleName(just the initial).-->
+                            ALONZO, Jose Anton S.
+                            <div class="age">
+                                Age: 21
+                            </div>
+                        </a>
+                    </div>
+                    <!--END PATIENT PARTIAL-->
+        </div>
+        <div id="legend">
+            <div class="fixed">
+                Legend
+                <ul id="list">
+                    <li><div class="dot" id="surgical"></div>Surgical</li>
+                    <li><div class="dot" id="medical"></div>Purely Medical</li>
+                    <li><div class="dot" id="checkup"></div>Checkup</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

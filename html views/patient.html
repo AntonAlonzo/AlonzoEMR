@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <!--CHANGE TO NAME VARIABLE-->
+    <title>ALONZO, Jose Anton S.</title>
+    <link rel="stylesheet" href="index-style.css">
+    <link rel="stylesheet" href="patient.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <!--ADD JS CODE HERE-->
+    <script type="text/javascript" src=""></script>
+</head>
+<body>
+    <div class="fixed">
+        <!-- HEADER PARTIAL -->
+        <div id="top-nav-bar" style="z-index: 9">
+            <a id="emr" href="home.html">Electronic Medical Record</a>
+            <ul id="top-nav">
+                <form action="/searchPatients" method="POST" id="searchbar">
+                    <input type="text" placeholder="Search..." name="search" id="search">
+                    <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                </form>
+            </ul>
+        </div>
+        <!-- END HEADER PARTIAL -->
+    </div>
+
+    <div id="page">
+        <div id="info">
+            <!--lastName, firstName middleName(just the initial).-->
+            <h3><div id="dot" class="checkup"></div>ALONZO, Jose Anton S.</h3>
+            <div id="demographic">
+                <div class="demo graphic">
+                    <div class="demo">
+                        <b>Age:<br>Gender:<br>Occupation:<br>Referred by:</b>
+                    </div>
+                    <div class="demo"> <!--REPLACE WITH VARIABLES-->
+                        21<br>Male<br>Student<br>Dr. Ma. Victoria Angelica P. Sido
+                    </div>
+                </div>
+                <div class="demo">
+                    <div class="demo space">
+                        <b>Birthday:<br>Contact:<br>Address:</b>
+                    </div>
+                    <div class="demo">  <!--REPLACE WITH VARIABLES-->
+                        06/11/2002<br>0917 123 4567<br>Las Pinas Address
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
