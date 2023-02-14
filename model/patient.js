@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const recordSchema = new mongoose.Schema({
+const patientSchema = new mongoose.Schema({
     creator: {
         type: String,
         required: true
@@ -52,7 +52,7 @@ const recordSchema = new mongoose.Schema({
     }
 })
 
-recordSchema.methods.formatDate = function (dateProperty) {
+patientSchema.methods.formatDate = function (dateProperty) {
 
     var monthNames = [
         "January", "February", "March", "April", "May", "June",
@@ -68,8 +68,8 @@ recordSchema.methods.formatDate = function (dateProperty) {
     return formattedDate;
 }
 
-recordSchema.index({ lastName: 'text', firstName: 'text', type: 'text' })
-const Record = mongoose.model('Record', recordSchema);
-Record.createIndexes();
+patientSchema.index({ lastName: 'text', firstName: 'text', type: 'text' })
+const Patient = mongoose.model('Patient', patientSchema);
+Patient.createIndexes();
 
-module.exports = Record;
+module.exports = Patient;

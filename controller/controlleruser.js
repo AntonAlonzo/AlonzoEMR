@@ -33,7 +33,7 @@ const controllerUser = {
                         else {
                             req.session.username = req.body.username;
                             var currentUser = await User.findOne({ 'username': req.session.username });
-                            res.render('user/userPage', { currentUser });
+                            res.redirect('/');
                         }
                     })
                 }

@@ -19,7 +19,7 @@ process.env.STATUS === 'development'
     ? (db_port = process.env.dev_DB)
     : (db_port = process.env.prod_DB)
 
-mongoose.connect("mongodb://127.0.0.1:27017/emr", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(db_port, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('MONGO CONNECTION OPEN!!!')
     })

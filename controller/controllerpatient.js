@@ -1,10 +1,10 @@
 var User = require('../model/user');
-var Record = require('../model/record');
+var Patient = require('../model/patient');
 var types = ['Surgical', 'Purely Medical', 'Checkup'];
 
 
 
-const controllerRecord = {
+const controllerPatient = {
 
     //Get page to create a new patient in the DB
     createPatient: async (req, res) => {
@@ -16,14 +16,14 @@ const controllerRecord = {
         if (req.session.username) {
             var data = req.body;
             data.creator = req.session.username;
-            var newData = new Record(data);
+            var newData = new Patient(data);
             await newData.save()
                 .then(async () => {
                     res.redirect('/');
                 })
                 .catch((err) => {
                     message = err;
-                    res.redirect('/record/new');
+                    res.redirect('/patient/new');
                 })
 
         }
@@ -36,17 +36,22 @@ const controllerRecord = {
     viewPatient: async (req, res) => {
         const patientId = req.params.patientId;
 
-        res.render('patient/patientRecord', { types });
-        Post.find({ _id: patientId}, function (err, result) {
-            if (err){
+        // res.render('patient/patientRecord', { types });
+        Patient.find({ _id: patientId }, function (err, result) {
+            if (err) {
                 console.log(err);
             } else {
-            res.render('record', {
-                post : result[0]
-            });            
+                res.render('patient/patientRecord', {
+                    patient: result[0]
+                });
             }
         });
-    }
+    },
+    searchPatients: async (req, res) => {
+        var { q } = req.query;
+        var searchPatients = await Patient.find({ $text: { $search: q } }).sort({ 'date': -1 });
+        res.render('patient/searchPatient', { q, searchPatients });
+    },
 }
 
-module.exports = controllerRecord;
+module.exports = controllerPatient;
