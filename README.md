@@ -6,7 +6,8 @@ Setup:
 2. open CMD in the folder of the repository
 3. run `npm install`
 4. install nodemon by running `npm install nodemon -g`
-5. run `node index.js`
+5. open mongoDBCompass and connect to `mongodb://localhost:27017`
+6. run `node index.js`
 
 For QAs:
 
