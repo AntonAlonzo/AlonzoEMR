@@ -2,7 +2,7 @@
 CSSWENG Final Project - Electronic Medical Record
 
 Setup:
-1. download .zip or clone repository pc
+1. download .zip or clone repository to pc
 2. open CMD in the folder of the repository
 3. run `npm install`
 4. install nodemon by running `npm install nodemon -g`
