@@ -36,13 +36,13 @@ const controllerPatient = {
     viewPatient: async (req, res) => {
         const patientId = req.params.patientId;
 
-        res.render('patient/patientRecord', { types });
-        Post.find({ _id: patientId }, function (err, result) {
+        // res.render('patient/patientRecord', { types });
+        Patient.find({ _id: patientId }, function (err, result) {
             if (err) {
                 console.log(err);
             } else {
-                res.render('record', {
-                    post: result[0]
+                res.render('patient/patientRecord', {
+                    patient: result[0]
                 });
             }
         });

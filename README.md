@@ -1,14 +1,6 @@
 # AlonzoEMR
 CSSWENG Final Project - Electronic Medical Record
 
-Setup:
-1. download .zip or clone repository to pc
-2. open CMD in the folder of the repository
-3. run `npm install`
-4. install nodemon by running `npm install nodemon -g`
-5. open mongoDBCompass and connect to `mongodb://localhost:27017`
-6. run `node index.js`
-
 For QAs:
 
 1. go to /user/signup to create an account before logging in
