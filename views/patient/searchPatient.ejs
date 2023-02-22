@@ -59,13 +59,12 @@
 
                         <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){ %>
                             <div class="patient-instance <%=consult %>"> <!--class changes depending on the latest consult-->
-                                <a href="patient/<%= patient._id %>.ejs" class="name">
+                                <a href="\patient/<%= patient._id %>" class="name">
                                     <!--lastName, firstName middleName(just the initial).-->
-                                    <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0)
-                                                %>.
-                                                <div class="age">
-                                                    <p class="age" id="age">Age: <%=age %></p>
-                                                </div>
+                                    <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
+                                    <div class="age">
+                                        <p class="age" id="age">Age: <%=age %></p>
+                                    </div>
                                 </a>
                             </div>
                             <% } %>
