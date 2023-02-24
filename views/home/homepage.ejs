@@ -60,7 +60,8 @@
               <%consult = "checkup"; }%>
 
             <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){ %>
-              <div class="patient-instance <%=consult %>"> <!--class changes depending on the latest consult-->
+              <!-- <div class="patient-instance <%=consult %>"> REMOVED class changes depending on the latest consult -->
+              <div class="patient-instance">
                 <a href="patient/<%= patient._id %>" class="name">
                   <!--lastName, firstName middleInitial(just the initial).-->
                   
@@ -78,14 +79,15 @@
     </div>
     <div id="legend">
       <div class="fixed">
-          <div id="group">
+          <!-- REMOVED legend -->
+          <!-- <div id="group">
               Legend
               <ul id="list">
                   <li><div class="dot" id="surgical"></div>Surgical</li>
                   <li><div class="dot" id="medical"></div>Purely Medical</li>
                   <li><div class="dot" id="checkup"></div>Checkup</li>
               </ul>
-          </div>
+          </div> -->
           <div id="button">
             <a href="/patient/new"><button type="submit" class="circle plus"></button></a>
           </div>

@@ -43,7 +43,11 @@
     <div id="page">
         <div id="info">
             <!--lastName, firstName middleName(just the initial).-->
-            <h3><div id="dot" class="<%=consult %>"></div><%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.</h3>
+            <h3>
+                <div id="dot" class="<%=consult %>"></div>
+                <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
+                <div id="edit"><a href="/patient/edit/<%= patient._id %>"><button style="font-size:24px"><i class="fa fa-pencil"></i></button></a></div>
+            </h3>
             <div id="demographic">
                 <div class="demo graphic">
                     <div class="demo">
