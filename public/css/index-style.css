@@ -57,3 +57,18 @@ a {
     cursor: pointer;
     border-radius: 0 5px 5px 0;
 }
+
+.dropbtn{
+    background-color: #287EFC;
+    color: #F1F4FE;
+    font-size: 16px;
+    border: none;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block
+}
+
