@@ -22,9 +22,5 @@ app.get('/patient/new', controllerPatient.createPatient);
 app.post('/patient', controllerPatient.addPatient);
 app.get('/patient/:patientId', controllerPatient.viewPatient);
 app.get('/patients/search', controllerPatient.searchPatients);
-// Search
-app.get('/patients/patient/:patientId', controllerPatient.viewPatient); 
-app.get('/patient/edit/:patientId', controllerPatient.editPatient);
-app.post('/patient/modify/:patientId', controllerPatient.modifyPatient);
 
 module.exports = app;

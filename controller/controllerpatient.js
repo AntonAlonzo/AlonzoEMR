@@ -33,56 +33,6 @@ const controllerPatient = {
             res.redirect('/user/login');
         }
     },
-
-    editPatient: async (req, res) => {
-        const patientId = req.params.patientId;
-
-        Patient.find({ _id: patientId }, function (err, result) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render('patient/editPatient', {
-                    patient: result[0],
-                    types
-                });
-            }
-        });
-    },
-
-    //Post the modified patient data into the DB
-    modifyPatient: async (req, res) => {
-        if (req.session.username) {
-            const patientId = req.params.patientId;
-
-            const query = { _id: patientId };
-            // const title = req.body.postTitle;
-            // const content = req.body.postBody;
-            Patient.updateOne(query, 
-                { lastName: req.body.lastName, 
-                    firstName: req.body.firstName,
-                    middleName: req.body.middleName,
-                    type: req.body.type,
-                    gender: req.body.gender,
-                    address: req.body.address,
-                    contactNumber: req.body.contactNumber,
-                    birthday: req.body.birthday,
-                    occupation: req.body.occupation,
-                    referral: req.body.referral }, function(err, result) {
-                if(err){
-                    console.log(err);
-                } else {
-                res.redirect('/');
-                }
-            });
-
-        }
-        else {
-            message = 'Login to proceed.';
-            console.log('Login to proceed.');
-            res.redirect('/user/login');
-        }
-    },
-
     viewPatient: async (req, res) => {
         const patientId = req.params.patientId;
 
@@ -97,7 +47,6 @@ const controllerPatient = {
             }
         });
     },
-
     searchPatients: async (req, res) => {
         var { q } = req.query;
         var searchPatients = await Patient.find({ $text: { $search: q } }).sort({ 'date': -1 });
