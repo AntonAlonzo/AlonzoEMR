@@ -30,6 +30,7 @@ a {
 }
 
 #emr {
+    text-decoration: none;
     float: left;
     padding: 6px;
     margin-left: 10px;
