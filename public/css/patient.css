@@ -15,7 +15,7 @@
 }
 
 h3 {
-    shadow: 5px 5px 10px #888888;
+    box-shadow: 5px 5px 10px #888888;
 }
 
 #dot {
@@ -24,7 +24,7 @@ h3 {
     width: 10px;
     border-radius: 50%;
     display: inline-block;
-    border:3px solid #192039S;    
+    border:3px solid #192039;    
 }
 
 .surgical {
@@ -37,6 +37,15 @@ h3 {
 
 .checkup {
     background-color: #5D2363;
+}
+
+#edit {
+    float: right;
+    background: #287EFC;
+    color: #F1F4FE;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
 }
 
 #demographic {
