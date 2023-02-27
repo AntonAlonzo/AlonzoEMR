@@ -140,4 +140,34 @@ form .consultation-details .input-box {
     color: white;
 }
 
+.button {
+    height: 35px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.button input {
+    height: 100%;
+    width: 100px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#sub1 {
+    color: white;
+    background-color: #26325D;
+    cursor: pointer;
+}
+
+#sub2 {
+    color: #26325D;
+    background-color: #8EA5C7;
+    cursor: pointer;
+}
+
+
 
