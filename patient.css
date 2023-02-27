@@ -18,34 +18,45 @@ h3 {
     shadow: 5px 5px 10px #888888;
 }
 
-#dot {
-    margin: 0 15px 3px -30px;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    border:3px solid #192039S;    
-}
-
-.surgical {
-    background-color: #C72939; 
-}
-
-.medical {
-    background-color: #157F74;
-}
-
-.checkup {
-    background-color: #5D2363;
-}
-
 #edit {
     float: right;
-    background: #287EFC;
-    color: #F1F4FE;
-    font-size: 15px;
+    font-size: 25px;
     cursor: pointer;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
+}
+
+.burger{
+    border: 0;
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+
+.burger:before{
+    width: 7px;
+    margin: 5px auto;
+    border-radius: 3px;
+}
+.burger:after{
+    margin: auto 5px;
+    height: 7px;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.burger:hover{
+    background: #d6d6d6;
+}
+
+.edit{
+    background: #F1F4FE;
 }
 
 #demographic {
@@ -65,4 +76,54 @@ h3 {
 
 .space {
     margin-right: 39px;
+}
+
+/* Patient Button */
+#button {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+}
+
+.square{
+    border: 1px solid #287EFC;
+    box-shadow: 1px 1px 3px #888888;
+    padding: 10px 15px 10px 15px;
+    border-radius: 6px;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #287EFC;
+    cursor: pointer;
+
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.square:before{
+    width: 7px;
+    margin: 5px auto;
+    border-radius: 3px;
+}
+.square:after{
+    margin: auto 5px;
+    height: 7px;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+    padding-left: 10px;
+}
+
+.fa.fa-plus{
+    color:white
 }
