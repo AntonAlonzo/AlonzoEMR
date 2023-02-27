@@ -117,7 +117,18 @@ const controllerUser = {
 
                 res.redirect('/user/signup');
             })
-    }
+    },
+
+    //Logout
+    logout: async (req, res) => {
+        if (process.env.STATUS === 'development') {
+            req.session.destroy();
+        }
+        else {
+            req.session = null
+        }
+        res.redirect('/user/login');
+    },
 
 }
 

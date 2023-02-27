@@ -16,6 +16,7 @@ app.post('/user', controllerUser.checkLogin);
 app.get('/user/signup', controllerUser.signup);
 app.post('/user/signup', controllerUser.addUser);
 app.get('/user/:username', controllerUser.userPage);
+app.get('/logout', controllerUser.logout);
 
 //Records section
 app.get('/patient/new', controllerPatient.createPatient);
@@ -24,7 +25,7 @@ app.get('/patient/:patientId', controllerPatient.viewPatient);
 app.get('/patients/search', controllerPatient.searchPatients);
 
 // Search
-app.get('/patients/patient/:patientId', controllerPatient.viewPatient); 
+app.get('/patients/patient/:patientId', controllerPatient.viewPatient);
 app.get('/patient/edit/:patientId', controllerPatient.editPatient);
 app.post('/patient/modify/:patientId', controllerPatient.modifyPatient);
 
