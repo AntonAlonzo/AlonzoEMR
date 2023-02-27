@@ -35,7 +35,6 @@
   <div id="page">
     <div id="patients">
       <!--INSERT FOR LOOP TO GENERATE LETTERS OF ALPHABET-->
-      <!--I'll put a sample for A-->
       <!--INSERT NESTED LOOP TO GENERATE THE PATIENTS UNDER THE LETTER-->
       <!-- For Loop to Print A-Z -->
       <% for (var i=65; i <=90; i++ ) { %>
@@ -77,21 +76,12 @@
 
 
     </div>
-    <div id="legend">
-      <div class="fixed">
-           <!-- REMOVED legend -->
-          <!-- <div id="group">
-              <ul id="list">
-                  <li><div class="dot" id="surgical"></div>Surgical</li>
-                  <li><div class="dot" id="medical"></div>Purely Medical</li>
-                  <li><div class="dot" id="checkup"></div>Checkup</li>
-              </ul>
-          </div>-->
-          <div id="button">
-            <a href="/patient/new"><button type="submit" class="circle plus"></button></a>
-          </div>
-      </div>
-  </div>
+    <div id="button">
+      <button onclick="window.location.href='/patient/new'" class="square">
+        <div class="left"><i class="fa fa-plus"></i></div>
+        <div class="right">Patient</div>
+      </button>
+    </div>
   </div>
 
   <!-- JS Script -->
