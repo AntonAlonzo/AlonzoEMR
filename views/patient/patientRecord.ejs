@@ -44,9 +44,12 @@
         <div id="info">
             <!--lastName, firstName middleName(just the initial).-->
             <h3>
-                <div id="dot" class="<%=consult %>"></div>
                 <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
-                <div id="edit"><a href="/patient/edit/<%= patient._id %>"><button style="font-size:24px"><i class="fa fa-pencil"></i></button></a></div>
+                <div class="edit">
+                    <button onclick="window.location.href='/patient/edit/<%= patient._id %>'" class="editdemo burger">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
             </h3>
             <div id="demographic">
                 <div class="demo graphic">
@@ -72,6 +75,90 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="consultation">
+        <h3 class="consult-title">
+            CONSULTATIONS
+        </h3>
+        <!--JS CODE to generate consultation instances-->
+        <div class="consult-instance">
+            <div class="date"> <!--REPLACE WITH VARIABLES-->
+                06/21/2022
+                <div class="edit">
+                    <button type="submit" class="editconsult burger">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="consultation">
+                <div>
+                    <div class="split">
+                        <div class="title">
+                            Subjective Findings
+                        </div>
+                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                            <li>
+                                4 days history of right flank pain and gross hematuria, (-) dysuria, (-) fever 
+                            </li>
+                            <li>
+                                PMHx: Unremarkable
+                            </li>
+                        </ul>
+                        <div class="title">
+                            Objective Findings
+                        </div>
+                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                            <li>
+                                PE: (+) minimal CV tenderness, right
+                            </li>
+                            <li>
+                                <button type="submit" class="file">
+                                    <i class="fa fa-file-text-o"></i> UA (6/18/2022)
+                                </button>
+                            </li>
+                            <li>
+                                <button type="submit" class="file">
+                                    <i class="fa fa-file-text-o"></i> KUB-UTZ (6/18/2022)
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="split">
+                        <div class="title">
+                            Assessment
+                        </div>
+                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                            <li>
+                                Nephrolithiasis, Right
+                            </li>
+                        </ul>
+                        <div class="title">
+                            Plan
+                        </div>
+                        <ul class="list"> 
+                            <li style="font-weight: bold;">
+                                Labs
+                                <li class="circle"> <!--REPLACE WITH VARIABLES-->
+                                    For possible PCNL, Right
+                                </li>
+                            </li>
+                            <li style="font-weight: bold;">
+                                Meds
+                                <li class="circle"> <!--REPLACE WITH VARIABLES-->
+                                    N/A
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="button">
+        <button type="submit" class="square">
+            <div class="left"><i class="fa fa-plus"></i></div>
+            <div class="right">Consultation</div>
+        </button>
     </div>
     <!-- JS Script -->
     <script type="text/javascript" src="/js/home.js"></script>

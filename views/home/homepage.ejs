@@ -29,9 +29,7 @@
     <%- include('../partials/header') %>
       <!-- END HEADER PARTIAL -->
   </div>
-
   
-
   <div id="page">
     <div id="patients">
       <!--INSERT FOR LOOP TO GENERATE LETTERS OF ALPHABET-->
@@ -60,16 +58,16 @@
 
             <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){ %>
                <!-- <div class="patient-instance <%=consult %>"> REMOVED class changes depending on the latest consult -->
-                <div class="patient-instance">
-                <a href="patient/<%= patient._id %>" class="name">
+              <button onclick="window.location.href='patient/<%= patient._id %>'" class="patient-instance">
+                <div class="name">
                   <!--lastName, firstName middleInitial(just the initial).-->
                   
                   <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
-                  <div class="age">
-                    <p class="age" id="age">Age: <%=age%></p>
-                  </div>
-                </a>
-              </div>
+                </div>
+                <div class="age">
+                  <p class="age" id="age">Age: <%=age%></p>
+                </div>
+              </button>
             <% } %>
           <% } %>
         <% } %>
