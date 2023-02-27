@@ -32,6 +32,7 @@ a {
 
 #emr {
     text-decoration: none;
+    font-family: 'Rubik', sans-serif;
     float: left;
     padding: 6px;
     margin-left: 10px;
@@ -45,7 +46,8 @@ a {
     border: none;
     font-size: 15px;
     font-family: 'Rubik', sans-serif;
-    margin-right: -4px;
+    margin-right: -5px;
+    margin-left: 10px;
     border-radius: 5px 0 0 5px;
     width: 300px;
 }
@@ -54,9 +56,9 @@ a {
     padding: 5px;
     background: #287EFC;
     color: #F1F4FE;
-    font-size: 15px;
-    border: 1px solid #287EFC;
-    border-left: none; /* Prevent double borders */
+    font-size: 14px;
+    border: 0;
+    border-bottom: 2px solid #287EFC;
     cursor: pointer;
     border-radius: 0 5px 5px 0;
 }
@@ -116,3 +118,53 @@ a {
     display: block;
     visibility: visible;
   }
+
+  /* Add Button */
+#button {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+}
+
+.square{
+    border: 1px solid #287EFC;
+    box-shadow: 1px 1px 3px #888888;
+    padding: 10px 15px 10px 15px;
+    border-radius: 6px;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #287EFC;
+    cursor: pointer;
+
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.square:before{
+    width: 7px;
+    margin: 5px auto;
+    border-radius: 3px;
+}
+.square:after{
+    margin: auto 5px;
+    height: 7px;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+    padding-left: 10px;
+}
+
+.fa.fa-plus{
+    color:white
+}
