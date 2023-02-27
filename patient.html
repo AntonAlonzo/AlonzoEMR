@@ -22,7 +22,9 @@
             <ul id="top-nav">
                 <form action="/searchPatients" method="POST" id="searchbar">
                     <input type="text" placeholder="Search..." name="search" id="search">
-                    <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
                 </form>
             </ul>
         </div>
@@ -34,7 +36,11 @@
             <!--lastName, firstName middleName(just the initial).-->
             <h3>
                 ALONZO, Jose Anton S.
-                <div id="edit"><button type="submit" class="edit burger"><i class="fa fa-bars"></i></button></div>
+                <div class="edit">
+                    <button type="submit" class="editdemo burger">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
             </h3>
             <div id="demographic">
                 <div class="demo graphic">
@@ -51,6 +57,83 @@
                     </div>
                     <div class="demo">  <!--REPLACE WITH VARIABLES-->
                         06/11/2002<br>0917 123 4567<br>Las Pinas Address
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="consultation">
+        <h3>
+            CONSULTATIONS
+        </h3>
+        <div class="consult-instance">
+            <div class="date">
+                06/21/2022
+                <div class="edit">
+                    <button type="submit" class="editconsult burger">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="consultation">
+                <div>
+                    <div class="split">
+                        <div class="title">
+                            Subjective Findings
+                        </div>
+                        <ul class="list">
+                            <li>
+                                4 days history of right flank pain and gross hematuria, (-) dysuria, (-) fever 
+                            </li>
+                            <li>
+                                PMHx: Unremarkable
+                            </li>
+                        </ul>
+                        <div class="title">
+                            Objective Findings
+                        </div>
+                        <ul class="list">
+                            <li>
+                                PE: (+) minimal CV tenderness, right
+                            </li>
+                            <li>
+                                <button type="submit" class="file">
+                                    <i class="fa fa-file-text-o"></i> UA (6/18/2022)
+                                </button>
+                            </li>
+                            <li>
+                                <button type="submit" class="file">
+                                    <i class="fa fa-file-text-o"></i> KUB-UTZ (6/18/2022)
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="split">
+                        <div class="title">
+                            Assessment
+                        </div>
+                        <ul class="list">
+                            <li>
+                                Nephrolithiasis, Right
+                            </li>
+                        </ul>
+                        <div class="title">
+                            Plan
+                        </div>
+                        <ul class="list">
+                            <li style="font-weight: bold;">
+                                Labs
+                                <li class="circle">
+                                    For possible PCNL, Right
+                                </li>
+                            </li>
+                            <li style="font-weight: bold;">
+                                Meds
+                                <li class="circle">
+                                    N/A
+                                </li>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

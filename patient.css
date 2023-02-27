@@ -4,9 +4,10 @@
     color: #192039;
 }
 
-/* Patients */
+/* Demographic */
 #info {
-    margin: 20px auto 5px auto;
+    margin: auto;
+    margin-top: 20px;
     padding: 30px;
     width: 85%;
     font-size: 25px;
@@ -15,10 +16,30 @@
 }
 
 h3 {
-    shadow: 5px 5px 10px #888888;
+    text-shadow: 2px 2px 3px #d6d6d6;
 }
 
-#edit {
+#demographic {
+    margin: -20px 10px -10px 10px;
+    font-size: 20px;
+}
+
+.demo {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.graphic {
+    margin-right: 100px
+}
+
+.space {
+    margin-right: 39px;
+}
+
+/* Edit Demographic */
+.edit {
     float: right;
     font-size: 25px;
     cursor: pointer;
@@ -29,7 +50,7 @@ h3 {
     border: 0;
     padding: 0px 5px 0px 5px;
     border-radius: 5px;
-    margin: 4px;
+    margin: 1px 4px 4px 4px;
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
@@ -55,75 +76,77 @@ h3 {
     background: #d6d6d6;
 }
 
-.edit{
+.editdemo{
     background: #F1F4FE;
 }
 
-#demographic {
-    margin: -20px 10px -10px 10px;
-    font-size: 20px;
+/* Consultation*/
+#consultation{
+    margin: auto;
+    margin-top: -10px;
+    padding: 0;
+    width: 85%;
+    font-size: 25px;
+    color: #192039;
 }
 
-.demo {
+.consult-instance{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #888888;
+    color: #192039;
+}
+
+.date{
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #192039;
+    border-bottom: 2px solid #192039;
+}
+
+.editconsult{
+    background: white;
+}
+
+.consultation{
+    padding: 10px 30px 10px 30px;
+}
+
+.split {
+    width: 49%;
+    overflow-x: hidden;
     display: inline-block;
     vertical-align: top;
     margin-right: 10px;
 }
 
-.graphic {
-    margin-right: 100px
+.title{
+    margin-bottom: -15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-.space {
-    margin-right: 39px;
+.list{
+    font-size: 20px;
 }
 
-/* Patient Button */
-#button {
-    position: absolute;
-    bottom: 30px;
-    right: 40px;
+.circle{
+    list-style-type: circle;
+    margin-left: 20px;
 }
 
-.square{
-    border: 1px solid #287EFC;
-    box-shadow: 1px 1px 3px #888888;
-    padding: 10px 15px 10px 15px;
-    border-radius: 6px;
-    position: relative;
-    margin: 4px;
+.file{
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px;
+    margin: 1px 4px 4px 4px;
     display: inline-block;
     vertical-align: middle;
-    background: #287EFC;
     cursor: pointer;
 
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Rubik', sans-serif;
-    font-weight: bold;
-    color: white;
-}
-
-.square:before{
-    width: 7px;
-    margin: 5px auto;
-    border-radius: 3px;
-}
-.square:after{
-    margin: auto 5px;
-    height: 7px;
-    border-radius: 3px;
-    box-shadow: none;
-}
-
-.left{
-    float: left;
-}
-
-.right{
-    float: right;
-    padding-left: 10px;
-}
-
-.fa.fa-plus{
-    color:white
+    color: #192039;
 }
