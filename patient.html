@@ -3,9 +3,9 @@
 
 <head>
     <!--CHANGE TO NAME VARIABLE-->
-    <title><%= patient.lastName %>, <%= patient.firstName %>, <%= patient.middleName.charAt(0)%></title>
-    <link rel="stylesheet" href="/css/index-style.css">
-    <link  rel="stylesheet" href="/css/patient.css">
+    <title>ALONZO, Jose Anton S.</title>
+    <link rel="stylesheet" href="index-style.css">
+    <link rel="stylesheet" href="patient.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,42 +17,31 @@
 <body>
     <div class="fixed">
         <!-- HEADER PARTIAL -->
-        <%- include('../partials/header') %>
+        <div id="top-nav-bar" style="z-index: 9">
+            <a id="emr" href="home.html">Electronic Medical Record</a>
+            <ul id="top-nav">
+                <form action="/searchPatients" method="POST" id="searchbar">
+                    <input type="text" placeholder="Search..." name="search" id="search">
+                    <button type="submit" id="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </ul>
+        </div>
         <!-- END HEADER PARTIAL -->
     </div>
-
-    <!-- Formatting Birthdate -->
-    <%var dateString = patient.birthday;%>
-    <%dateString = new Date(dateString).toLocaleDateString();%>
-
-    <!-- Calculating Age -->
-    <%const now = new Date();%>
-    <%const diff = Math.abs(now - patient.birthday );%>
-    <%const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
-
-    <!-- Determining Type of Consult for div tag -->
-    <%var consult = ""%>
-    <%if (patient.type === "Surgical") {%>
-      <%consult = "surgical"; }%>
-    <%if (patient.type === "Purely Medical") {%>
-      <%consult = "medical"; }%>
-    <%if (patient.type === "Checkup") {%>
-      <%consult = "checkup"; }%>
-
 
     <div id="page">
         <div id="info">
             <!--lastName, firstName middleName(just the initial).-->
             <h3>
-                <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
+                ALONZO, Jose Anton S.
                 <div class="edit">
                     <button onclick="demoFunction()" class="editdemo burger">
                         <i class="fa fa-bars"></i>
                     </button>
                     <div id="demoDrop" class="demo-content">
-                        <button class="above-option" onclick="window.location.href='/patient/edit/<%= patient._id %>'">
-                            Edit Info
-                        </button>
+                        <a class="above-option" href="#edit">Edit Info</a>
                         <!--
                         <a href="#about">Minimize Info</a>
                         -->
@@ -65,10 +54,7 @@
                         <b>Age:<br>Gender:<br>Occupation:<br>Referred by:</b>
                     </div>
                     <div class="demo"> <!--REPLACE WITH VARIABLES-->
-                        <%= age %>
-                        <br><%= patient.gender %>
-                        <br><%= patient.occupation %>
-                        <br><%= patient.referral %>
+                        21<br>Male<br>Student<br>Dr. Ma. Victoria Angelica P. Sido
                     </div>
                 </div>
                 <div class="demo">
@@ -76,30 +62,25 @@
                         <b>Birthday:<br>Contact:<br>Address:</b>
                     </div>
                     <div class="demo">  <!--REPLACE WITH VARIABLES-->
-                        <%= dateString %>
-                        <br><%= patient.contactNumber %>
-                        <br><%= patient.address %>
+                        06/11/2002<br>0917 123 4567<br>Las Pinas Address
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="consultation">
-        <h3 class="consult-title">
+        <h3>
             CONSULTATIONS
         </h3>
-        <!--JS CODE to generate consultation instances-->
         <div class="consult-instance">
-            <div class="date"> <!--REPLACE WITH VARIABLES-->
+            <div class="date">
                 06/21/2022
                 <div class="edit">
                     <button onclick="consultFunction()" class="editconsult burger">
                         <i class="fa fa-bars"></i>
                     </button>
                     <div id="consultDrop" class="consult-content">
-                        <button class="above-option" onclick="window.location.href=''"> <!--ADD LINK-->
-                            Edit Info
-                        </button>
+                        <a class="above-option" href="#edit">Edit Info</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +90,7 @@
                         <div class="title">
                             Subjective Findings
                         </div>
-                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                        <ul class="list">
                             <li>
                                 4 days history of right flank pain and gross hematuria, (-) dysuria, (-) fever 
                             </li>
@@ -120,7 +101,7 @@
                         <div class="title">
                             Objective Findings
                         </div>
-                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                        <ul class="list">
                             <li>
                                 PE: (+) minimal CV tenderness, right
                             </li>
@@ -140,7 +121,7 @@
                         <div class="title">
                             Assessment
                         </div>
-                        <ul class="list"> <!--REPLACE WITH VARIABLES-->
+                        <ul class="list">
                             <li>
                                 Nephrolithiasis, Right
                             </li>
@@ -148,16 +129,16 @@
                         <div class="title">
                             Plan
                         </div>
-                        <ul class="list"> 
+                        <ul class="list">
                             <li style="font-weight: bold;">
                                 Labs
-                                <li class="circle"> <!--REPLACE WITH VARIABLES-->
+                                <li class="circle">
                                     For possible PCNL, Right
                                 </li>
                             </li>
                             <li style="font-weight: bold;">
                                 Meds
-                                <li class="circle"> <!--REPLACE WITH VARIABLES-->
+                                <li class="circle">
                                     N/A
                                 </li>
                             </li>
@@ -167,15 +148,7 @@
             </div>
         </div>
     </div>
-    <div id="button">
-        <button type="submit" class="square">
-            <div class="left"><i class="fa fa-plus"></i></div>
-            <div class="right">Consultation</div>
-        </button>
-    </div>
-    <!-- JS Script -->
-    <script type="text/javascript" src="/js/home.js"></script>
-    <!--JS SCRIPT FOR DROPDOWN-->
+
     <script>
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
@@ -215,5 +188,12 @@
           }
         }
     </script>
+
+    <div id="button">
+        <button type="submit" class="square">
+            <div class="left"><i class="fa fa-plus"></i></div>
+            <div class="right">Consultation</div>
+        </button>
+    </div>
 </body>
 </html>
