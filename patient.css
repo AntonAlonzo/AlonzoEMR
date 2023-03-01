@@ -19,6 +19,10 @@ h3 {
     text-shadow: 2px 2px 3px #d6d6d6;
 }
 
+.consult-title{
+    margin-bottom: 15px;
+}
+
 #demographic {
     margin: -20px 10px -10px 10px;
     font-size: 20px;
@@ -72,13 +76,71 @@ h3 {
     box-shadow: none;
 }
 
-.burger:hover{
+.burger:hover, .burger:focus{
     background: #d6d6d6;
 }
 
 .editdemo{
     background: #F1F4FE;
+    padding: 0px 5px 0px 5px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    float: right;
 }
+
+.demo-content {
+    display: none;
+    background-color: white;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    border-radius: 5px;
+}
+
+.demo-content a {
+    color: black;
+    position: static;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    right: 0;
+}
+
+.above-option{
+    margin-right: 35px;
+}
+
+.editconsult{
+    background: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+.consult-content {
+    display: none;
+    background-color: #F1F4FE;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    border-radius: 5px;
+}
+
+.consult-content a {
+    color: black;
+    position: static;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+    display: block;
+    right: 0;
+}
+  
+.show {display: block;}
 
 /* Consultation*/
 #consultation{
@@ -95,6 +157,7 @@ h3 {
     border-radius: 5px;
     box-shadow: 5px 5px 10px #888888;
     color: #192039;
+    margin-bottom: 25px;
 }
 
 .date{
@@ -106,16 +169,12 @@ h3 {
     border-bottom: 2px solid #192039;
 }
 
-.editconsult{
-    background: white;
-}
-
 .consultation{
     padding: 10px 30px 10px 30px;
 }
 
 .split {
-    width: 49%;
+    width: 48%;
     overflow-x: hidden;
     display: inline-block;
     vertical-align: top;

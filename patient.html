@@ -37,9 +37,15 @@
             <h3>
                 ALONZO, Jose Anton S.
                 <div class="edit">
-                    <button type="submit" class="editdemo burger">
+                    <button onclick="demoFunction()" class="editdemo burger">
                         <i class="fa fa-bars"></i>
                     </button>
+                    <div id="demoDrop" class="demo-content">
+                        <a class="above-option" href="#edit">Edit Info</a>
+                        <!--
+                        <a href="#about">Minimize Info</a>
+                        -->
+                      </div>
                 </div>
             </h3>
             <div id="demographic">
@@ -70,9 +76,12 @@
             <div class="date">
                 06/21/2022
                 <div class="edit">
-                    <button type="submit" class="editconsult burger">
+                    <button onclick="consultFunction()" class="editconsult burger">
                         <i class="fa fa-bars"></i>
                     </button>
+                    <div id="consultDrop" class="consult-content">
+                        <a class="above-option" href="#edit">Edit Info</a>
+                      </div>
                 </div>
             </div>
             <div class="consultation">
@@ -139,6 +148,47 @@
             </div>
         </div>
     </div>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function demoFunction() {
+          document.getElementById("demoDrop").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.editdemo')) {
+            var dropdowns = document.getElementsByClassName("demo-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+        function consultFunction() {
+          document.getElementById("consultDrop").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.editconsult')) {
+            var dropdowns = document.getElementsByClassName("consult-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+
     <div id="button">
         <button type="submit" class="square">
             <div class="left"><i class="fa fa-plus"></i></div>
