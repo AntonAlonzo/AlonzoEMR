@@ -1,0 +1,44 @@
+const mongoose = require('mongoose');
+
+const consultationSchema = new mongoose.Schema({
+    patientID: {
+        type: String,
+        required: true
+    },
+    subjective: [
+        String
+    ],
+    assessment: [
+        String
+    ],
+    objective: [
+        String
+    ],
+    plan: [
+        String
+    ],
+    date: {
+        type: Date,
+        required: true
+    }
+})
+
+consultationSchema.methods.formatDate = function (dateProperty) {
+
+    var monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November",
+        "December"
+    ]
+
+    const newDate = new Date(dateProperty);
+    var day = monthNames[newDate.getMonth()];
+    let formattedDate = `${day} `;  // for double digit month
+    formattedDate += `${`${newDate.getDate()}`}, `;        // for double digit day
+    formattedDate += `${newDate.getFullYear()}`;
+    return formattedDate;
+}
+
+const Consultation = mongoose.model('Consultation', consultationSchema);
+
+module.exports = Consultation;

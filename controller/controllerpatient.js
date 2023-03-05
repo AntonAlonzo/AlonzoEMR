@@ -1,5 +1,6 @@
 var User = require('../model/user');
 var Patient = require('../model/patient');
+var Consultation = require('../model/consultation');
 var types = ['Surgical', 'Purely Medical', 'Checkup'];
 
 
@@ -34,7 +35,7 @@ const controllerPatient = {
         }
     },
 
-    
+
     editPatient: async (req, res) => {
         const patientId = req.params.patientId;
 
@@ -58,8 +59,9 @@ const controllerPatient = {
             const query = { _id: patientId };
             // const title = req.body.postTitle;
             // const content = req.body.postBody;
-            Patient.updateOne(query, 
-                { lastName: req.body.lastName, 
+            Patient.updateOne(query,
+                {
+                    lastName: req.body.lastName,
                     firstName: req.body.firstName,
                     middleName: req.body.middleName,
                     type: req.body.type,
@@ -68,13 +70,14 @@ const controllerPatient = {
                     contactNumber: req.body.contactNumber,
                     birthday: req.body.birthday,
                     occupation: req.body.occupation,
-                    referral: req.body.referral }, function(err, result) {
-                if(err){
-                    console.log(err);
-                } else {
-                res.redirect('/');
-                }
-            });
+                    referral: req.body.referral
+                }, function (err, result) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.redirect('/');
+                    }
+                });
 
         }
         else {
@@ -87,13 +90,16 @@ const controllerPatient = {
     viewPatient: async (req, res) => {
         const patientId = req.params.patientId;
 
+        var consultations = await Consultation.find({ patientID: patientId }).sort({ 'date': -1 });
+
+
         // res.render('patient/patientRecord', { types });
         Patient.find({ _id: patientId }, function (err, result) {
             if (err) {
                 console.log(err);
             } else {
                 res.render('patient/patientRecord', {
-                    patient: result[0]
+                    patient: result[0], consultations
                 });
             }
         });

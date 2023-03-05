@@ -7,7 +7,7 @@
     font-family: 'Rubik', sans-serif;
 }
 
-body{
+body {
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -42,7 +42,7 @@ h1 {
 }
 
 
-.today input{
+.today input {
     border: none;
     background: #F1F4FE;
     color: #555871;
@@ -50,7 +50,7 @@ h1 {
     font-weight: bold;
 }
 
-.container{
+.container {
     max-width: 850px;
     width: 100%;
     background: white;
@@ -58,7 +58,7 @@ h1 {
     border-radius: 10px;
 }
 
-.container form .consultation-details{
+.container form .consultation-details {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -77,7 +77,7 @@ form .consultation-details .input-box {
     color: #1f2664;
 }
 
-.consultation-details .input-box textarea{
+.consultation-details .input-box textarea {
     height: 60px;
     width: 100%;
     outline: none;
@@ -93,7 +93,7 @@ form .consultation-details .input-box {
     border-color: #494a4e;
 }
 
-.plan button{
+.plan button {
     border: none;
     font-size: 20px;
     cursor: pointer;
@@ -104,7 +104,7 @@ form .consultation-details .input-box {
 }
 
 .plan #minus {
-   color: #FF4545;
+    color: #FF4545;
 }
 
 #opt {
@@ -126,7 +126,7 @@ form .consultation-details .input-box {
     border-bottom-width: 2px;
 }
 
-.upload-file{
+.upload-file {
     background-color: #287EFC;
     padding: 7px;
     border-radius: 10px;
@@ -134,7 +134,7 @@ form .consultation-details .input-box {
     width: 115px;
 }
 
-.upload-file label{
+.upload-file label {
     cursor: pointer;
     font-size: 15px;
     color: white;
@@ -168,6 +168,3 @@ form .consultation-details .input-box {
     background-color: #8EA5C7;
     cursor: pointer;
 }
-
-
-

@@ -5,6 +5,7 @@ const app = express();
 const controllerUser = require('../controller/controlleruser.js');
 const controllerPatient = require('../controller/controllerpatient.js');
 const controllerHome = require('../controller/controllerhome.js');
+const controllerConsultation = require('../controller/controllerconsultation.js');
 
 //Home page section
 app.get('/', controllerHome.goHome);
@@ -23,6 +24,13 @@ app.get('/patient/new', controllerPatient.createPatient);
 app.post('/patient', controllerPatient.addPatient);
 app.get('/patient/:patientId', controllerPatient.viewPatient);
 app.get('/patients/search', controllerPatient.searchPatients);
+
+//Consultation
+
+app.get('/patient/:patientId/newConsultation', controllerConsultation.createConsultation);
+app.post('/patient/:patientId', controllerConsultation.addConsultation);
+app.get('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultationPage);
+app.patch('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultation);
 
 // Search
 app.get('/patients/patient/:patientId', controllerPatient.viewPatient);

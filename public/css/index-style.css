@@ -4,9 +4,9 @@ body {
     background-color: #F1F4FE;
 }
 
-.fixed{
+.fixed {
     position: fixed;
-   
+
 }
 
 /* Header */
@@ -19,7 +19,7 @@ body {
 
 a {
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #top-nav-bar {
@@ -51,7 +51,7 @@ a {
     border-radius: 5px 0 0 5px;
     width: 300px;
 }
-  
+
 #search-button {
     padding: 5px;
     background: #287EFC;
@@ -76,11 +76,12 @@ a {
     background-color: #287EFC;
     border-radius: 3px;
     color: white;
-    font-family: inherit; 
-    margin: 0; /* Important for vertical align on mobile phones */
-  }
+    font-family: inherit;
+    margin: 0;
+    /* Important for vertical align on mobile phones */
+}
 
-.dropdown:hover .dropbtn{
+.dropdown:hover .dropbtn {
     background-color: #a7b2d4;
 }
 
@@ -91,9 +92,9 @@ a {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
+}
 
 .dropdown-content a {
     float: none;
@@ -104,27 +105,27 @@ a {
     display: block;
     text-align: center;
     font-size: 15px;
-  }
+}
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
     background-color: #ddd;
-  }
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
     display: block;
     visibility: visible;
-  }
+}
 
-  /* Add Button */
+/* Add Button */
 #button {
     position: fixed;
     bottom: 30px;
     right: 40px;
 }
 
-.square{
+.square {
     border: 1px solid #287EFC;
     box-shadow: 1px 1px 3px #888888;
     padding: 10px 15px 10px 15px;
@@ -142,27 +143,28 @@ a {
     color: white;
 }
 
-.square:before{
+.square:before {
     width: 7px;
     margin: 5px auto;
     border-radius: 3px;
 }
-.square:after{
+
+.square:after {
     margin: auto 5px;
     height: 7px;
     border-radius: 3px;
     box-shadow: none;
 }
 
-.left{
+.left {
     float: left;
 }
 
-.right{
+.right {
     float: right;
     padding-left: 10px;
 }
 
-.fa.fa-plus{
-    color:white
+.fa.fa-plus {
+    color: white
 }
