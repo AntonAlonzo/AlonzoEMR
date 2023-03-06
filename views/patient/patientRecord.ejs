@@ -228,15 +228,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <form action="/patient/<%= patient._id %>/newConsultation">
-                                                            <div id="button">
-                                                                <button type="submit" class="square">
-                                                                    <div class="left"><i class="fa fa-plus"></i>
-                                                                    </div>
-                                                                    <div class="right">Consultation</div>
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                        
+                                                        <!-- Moved Button outside Consultation div -->
+
                                                         <!-- <form
                                                             action="/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>">
                                                             <div id="button">
@@ -291,6 +285,16 @@
                                                         </script>
                                                         </div>
                                                         <% } %>
+
+        <form action="/patient/<%= patient._id %>/newConsultation">
+            <div id="button">
+                <button type="submit" class="square">
+                    <div class="left"><i class="fa fa-plus"></i>
+                    </div>
+                    <div class="right">Consultation</div>
+                </button>
+            </div>
+        </form>
 </body>
 
 </html>
