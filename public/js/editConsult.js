@@ -6,6 +6,12 @@ const assessBtn = document.getElementById("assessBtn");
 const objBtn = document.getElementById("objBtn");
 const planBtn = document.getElementById("planBtn");
 
+//Minus Buttons
+const subjMinus = document.getElementById("subjMinus");
+const assessMinus = document.getElementById("assessMinus");
+const objMinus = document.getElementById("objMinus");
+const planMinus = document.getElementById("planMinus");
+
 //Text inputs
 var subjective = document.querySelector("#subjective");
 var assessment = document.querySelector("#assessment");
@@ -21,8 +27,6 @@ var planCont = document.getElementById('planCont');
 function getInputVal() {
     console.log(inputEl.value);
 }
-
-
 
 var subjCount = 0;
 var assessCount = 0;
@@ -45,6 +49,8 @@ function subjPush(req, res) {
         var newInput = document.createElement('textarea')
         newInput.value = "";
         newInput.setAttribute('name', 'subjective');
+        newInput.setAttribute('class', 'subjective');
+        newInput.required = true;
         ul.appendChild(newInput);
     }
 
@@ -63,6 +69,8 @@ function assessPush(req, res) {
         var newInput = document.createElement('textarea')
         newInput.value = "";
         newInput.setAttribute('name', 'assessment');
+        newInput.setAttribute('class', 'assessment');
+        newInput.required = true;
         ul.appendChild(newInput);
     }
 
@@ -81,6 +89,8 @@ function objPush(req, res) {
         var newInput = document.createElement('textarea')
         newInput.value = "";
         newInput.setAttribute('name', 'objective');
+        newInput.setAttribute('class', 'objective');
+        newInput.required = true;
         ul.appendChild(newInput);
     }
 
@@ -100,11 +110,39 @@ function planPush(req, res) {
         var newInput = document.createElement('textarea')
         newInput.value = "";
         newInput.setAttribute('name', 'plan');
+        newInput.setAttribute('class', 'planText');
+        newInput.required = true;
         ul.appendChild(newInput);
     }
 
     planCont.appendChild(ul);       // add list to the c
     planCount = planArr.length;
+}
+
+
+function subjPull() {
+    // create ul element and set the attributes.
+    var elem = document.querySelectorAll(".subjective");
+    lastElem = elem[elem.length - 1];
+    lastElem.remove();
+}
+function assessPull() {
+    // create ul element and set the attributes.
+    var elem = document.querySelectorAll(".assessment");
+    lastElem = elem[elem.length - 1];
+    lastElem.remove();
+}
+function objPull() {
+    // create ul element and set the attributes.
+    var elem = document.querySelectorAll(".objective");
+    lastElem = elem[elem.length - 1];
+    lastElem.remove();
+}
+function planPull() {
+    // create ul element and set the attributes.
+    var elem = document.querySelectorAll(".planText");
+    lastElem = elem[elem.length - 1];
+    lastElem.remove();
 }
 
 
@@ -114,9 +152,12 @@ assessBtn.addEventListener("click", assessPush);
 objBtn.addEventListener("click", objPush);
 planBtn.addEventListener("click", planPush);
 
-exports.subjArr;
-exports.assessArr;
-exports.objArr;
-exports.planArr;
+//remove
+
+subjMinus.addEventListener("click", subjPull);
+assessMinus.addEventListener("click", assessPull);
+objMinus.addEventListener("click", objPull);
+planMinus.addEventListener("click", planPull);
+
 
 

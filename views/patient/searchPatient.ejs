@@ -44,32 +44,40 @@
                     <% for (let patient of searchPatients) { %>
 
                         <!-- Calculating Age -->
-                        <%const now = new Date();%>
-                        <%const diff = Math.abs(now - patient.birthday );%>
-                        <%const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
+                        <%const now=new Date();%>
+                            <%const diff=Math.abs(now - patient.birthday );%>
+                                <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
 
-                        <!-- Determining Type of Consult for div tag -->
-                        <%var consult = ""%>
-                        <%if (patient.type === "Surgical") {%>
-                            <%consult = "surgical"; }%>
-                        <%if (patient.type === "Purely Medical") {%>
-                            <%consult = "medical"; }%>
-                        <%if (patient.type === "Checkup") {%>
-                            <%consult = "checkup"; }%>
+                                    <!-- Determining Type of Consult for div tag -->
+                                    <%var consult="" %>
+                                        <%if (patient.type==="Surgical" ) {%>
+                                            <%consult="surgical" ; }%>
+                                                <%if (patient.type==="Purely Medical" ) {%>
+                                                    <%consult="medical" ; }%>
+                                                        <%if (patient.type==="Checkup" ) {%>
+                                                            <%consult="checkup" ; }%>
 
-                        <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){ %>
-                            <div class="patient-instance <%=consult %>"> <!--class changes depending on the latest consult-->
-                                <a href="\patient/<%= patient._id %>" class="name">
-                                    <!--lastName, firstName middleName(just the initial).-->
-                                    <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
-                                    <div class="age">
-                                        <p class="age" id="age">Age: <%=age %></p>
-                                    </div>
-                                </a>
-                            </div>
-                            <% } %>
-                                <% } %>
-                                    <% } %>
+                                                                <% if(patient?.lastName?.charAt(0)==String.fromCharCode(i)){
+                                                                    %>
+                                                                    <!-- <div class="patient-instance <%=consult %>"> REMOVED class changes depending on the latest consult -->
+                                                                    <button
+                                                                        onclick="window.location.href='patient/<%= patient._id %>'"
+                                                                        class="patient-instance">
+                                                                        <div class="name">
+                                                                            <!--lastName, firstName middleInitial(just the initial).-->
+
+                                                                            <%= patient.lastName %>, <%=
+                                                                                    patient.firstName %>
+                                                                                    <%= patient.middleName.charAt(0) %>.
+                                                                        </div>
+                                                                        <div class="age">
+                                                                            <p class="age" id="age">Age: <%=age%>
+                                                                            </p>
+                                                                        </div>
+                                                                    </button>
+                                                                    <% } %>
+                                                                        <% } %>
+                                                                            <% } %>
 
         </div>
         <div id="legend">
@@ -77,13 +85,19 @@
                 <div id="group">
                     Legend
                     <ul id="list">
-                        <li><div class="dot" id="surgical"></div>Surgical</li>
-                        <li><div class="dot" id="medical"></div>Purely Medical</li>
-                        <li><div class="dot" id="checkup"></div>Checkup</li>
+                        <li>
+                            <div class="dot" id="surgical"></div>Surgical
+                        </li>
+                        <li>
+                            <div class="dot" id="medical"></div>Purely Medical
+                        </li>
+                        <li>
+                            <div class="dot" id="checkup"></div>Checkup
+                        </li>
                     </ul>
                 </div>
                 <div id="button">
-                  <a href="/patient/new"><button type="submit" class="circle plus"></button></a>
+                    <a href="/patient/new"><button type="submit" class="circle plus"></button></a>
                 </div>
             </div>
         </div>

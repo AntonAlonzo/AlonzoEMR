@@ -20,7 +20,23 @@ const consultationSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true
-    }
+    },
+    file: [
+        {
+            createdAt: {
+                type: Date,
+                default: Date.now,
+            },
+            name: {
+                type: String,
+                required: [true, "Uploaded file must have a name"],
+            },
+            title: {
+                type: String,
+                required: true
+            }
+        }
+    ]
 })
 
 consultationSchema.methods.formatDate = function (dateProperty) {

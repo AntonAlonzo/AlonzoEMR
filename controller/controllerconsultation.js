@@ -2,7 +2,35 @@ var User = require('../model/user');
 var Patient = require('../model/patient');
 var Consultation = require('../model/consultation')
 var types = ['Surgical', 'Purely Medical', 'Checkup'];
+const multer = require("multer");
+const bodyParser = require("body-parser");
+const fs = require("fs");
 
+
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public");
+    },
+    filename: (req, file, cb) => {
+        const ext = file.mimetype.split("/")[1];
+        cb(null, `files/${file.originalname}.${ext}`);
+    },
+});
+
+// Multer Filter
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.split("/")[1] === "pdf" || file.mimetype.split("/")[1] === "png" || file.mimetype.split("/")[1] === "jpg") {
+        cb(null, true);
+    } else {
+        cb(new Error("Not a PDF File!!"), false);
+    }
+};
+
+//Calling the "multer" Function
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: multerFilter,
+});
 
 
 const controllerConsultation = {
@@ -26,7 +54,9 @@ const controllerConsultation = {
             const { patientId } = req.params;
             var data = req.body;
 
+
             data.patientID = patientId;
+            data.date = req.body.date;
             if (!data.date) {
                 data.date = Date.now();
             }
@@ -84,6 +114,65 @@ const controllerConsultation = {
         }
     },
 
+    uploadFile: async (req, res) => {
+        // Stuff to be added later
+        // console.log(req.file)
+
+        try {
+            const { consultationId } = req.params;
+            const { patientId } = req.params;
+            var currConsult = await Consultation.findOne({ _id: consultationId });
+            const newFile = req.body;
+            newFile.name = req.file.filename;
+            newFile.title = req.body.title;
+
+            currConsult.file.push(newFile);
+            await currConsult.save();
+
+            res.status(200).redirect(`/patient/${patientId}`);
+        } catch (error) {
+            res.json({
+                error,
+            })
+            console.log(error);
+        }
+    },
+
+    deleteFile: async (req, res) => {
+        if (req.session.username) {
+            const { consultationId } = req.params;
+            const { fileId } = req.params;
+            var fileName;
+            var currentConsultation = await Consultation.findById(consultationId)
+                .then(async (currentConsultation, fileName) => {
+
+                    for (let file of currentConsultation.file) {
+                        if (file._id == fileId) {
+                            fileName = file.name;
+                        }
+                    }
+
+                    var directoryPath = "./public/";
+
+                    fs.unlink(directoryPath + fileName, async (err) => {
+                        if (err) {
+                            res.status(500).send({
+                                message: "Could not delete the file. " + err,
+                            });
+                        }
+
+                        await currentConsultation.file.pull({ _id: fileId });
+                        await currentConsultation.save();
+                        res.redirect(`/patient/${currentConsultation.patientID}`);
+                    });
+
+
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    }
 }
 
 module.exports = controllerConsultation;

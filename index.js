@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const bodyParser = require("body-parser");
+
 
 if (process.env.STATUS === 'development') {
     var session = require('express-session');
@@ -38,6 +40,7 @@ app.use(function (req, res, next) {
     res.locals.loggedin = req.session.username;
     next();
 });
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))

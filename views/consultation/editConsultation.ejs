@@ -43,12 +43,14 @@
                     <div class="input-box">
                         <span class="details">Subjective Findings</span>
                         <% for(let finding of currConsult.subjective) {%> <textarea id="subjective" name="subjective"
-                                cols="30" rows="10"><%=finding%></textarea>
+                                cols="30" rows="10" class="subjective" required><%=finding%></textarea>
                             <% } %>
                                 <div id="subjCont"></div>
                                 <div class="plan">
                                     <button id="subjBtn" class="btn" type="button" id="plus"><i
                                             class="fa-solid fa-circle-plus"></i></button>
+                                    <button id="subjMinus" class="btn" type="button"><i
+                                            class="fa-solid fa-circle-minus"></i></button>
                                 </div>
 
                     </div>
@@ -56,12 +58,14 @@
                     <div class="input-box">
                         <span class="details">Assessment</span>
                         <% for(let finding of currConsult.assessment) {%> <textarea id="assessment" name="assessment"
-                                cols="30" rows="10"><%=finding%></textarea>
+                                cols="30" rows="10" class="assessment" required><%=finding%></textarea>
                             <% } %>
                                 <div id="assessCont"></div>
                                 <div class="plan">
                                     <button id="assessBtn" class="btn" type="button" id="plus"><i
                                             class="fa-solid fa-circle-plus"></i></button>
+                                    <button id="assessMinus" class="btn" type="button"><i
+                                            class="fa-solid fa-circle-minus"></i></button>
                                 </div>
 
                     </div>
@@ -69,25 +73,29 @@
                     <div class="input-box">
                         <span class="details">Objective Findings</span>
                         <% for(let finding of currConsult.objective) {%> <textarea id="objective" name="objective"
-                                cols="30" rows="10"><%=finding%></textarea>
+                                cols="30" rows="10" class="objective" required><%=finding%></textarea>
                             <% } %>
                                 <div id="objCont"></div>
                                 <div class="plan">
                                     <button id="objBtn" class="btn" type="button" id="plus"><i
                                             class="fa-solid fa-circle-plus"></i></button>
+                                    <button id="objMinus" class="btn" type="button"><i
+                                            class="fa-solid fa-circle-minus"></i></button>
                                 </div>
 
                     </div>
 
                     <div class="input-box">
                         <span class="details">Plan</span>
-                        <% for(let finding of currConsult.plan) {%> <textarea id="plan" name="plan" cols="30"
-                                rows="10"><%=finding%></textarea>
+                        <% for(let finding of currConsult.plan) {%> <textarea id="plan" name="plan" cols="30" rows="10"
+                                class="planText" required><%=finding%></textarea>
                             <% } %>
                                 <div id="planCont"></div>
                                 <div class="plan">
                                     <button id="planBtn" class="btn" type="button" id="plus"><i
                                             class="fa-solid fa-circle-plus"></i></button>
+                                    <button id="planMinus" class="btn" type="button"><i
+                                            class="fa-solid fa-circle-minus"></i></button>
                                 </div>
 
                     </div>

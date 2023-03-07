@@ -1,11 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const multer = require("multer");
+const bodyParser = require("body-parser");
 
 const controllerUser = require('../controller/controlleruser.js');
 const controllerPatient = require('../controller/controllerpatient.js');
 const controllerHome = require('../controller/controllerhome.js');
 const controllerConsultation = require('../controller/controllerconsultation.js');
+
+
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public");
+    },
+    filename: (req, file, cb) => {
+        const ext = file.mimetype.split("/")[1];
+        cb(null, `files/${file.originalname}.${ext}`);
+    },
+});
+
+// Multer Filter
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.split("/")[1] === "pdf" || file.mimetype.split("/")[1] === "png" || file.mimetype.split("/")[1] === "jpeg") {
+        cb(null, true);
+    } else {
+        cb(new Error("Not a PDF File!!"), false);
+    }
+};
+
+//Calling the "multer" Function
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: multerFilter,
+});
 
 //Home page section
 app.get('/', controllerHome.goHome);
@@ -31,6 +59,8 @@ app.get('/patient/:patientId/newConsultation', controllerConsultation.createCons
 app.post('/patient/:patientId', controllerConsultation.addConsultation);
 app.get('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultationPage);
 app.patch('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultation);
+app.post('/patient/:patientId/newFile/:consultationId', upload.single("myFile"), controllerConsultation.uploadFile);
+app.delete('/delete_file/:consultationId/:fileId', controllerConsultation.deleteFile);
 
 // Search
 app.get('/patients/patient/:patientId', controllerPatient.viewPatient);

@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Consultation Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index-style.css">
     <link rel="stylesheet" href="/css/add-consultation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,9 +27,9 @@
 
         <div class="today">
             <label for="date">Date: </label>
-            <input id="today" type="date" name="">
+            <input id="date" type="date" name="date">
             <script>
-                var field = document.querySelector('#today');
+                var field = document.querySelector('#date');
                 var date = new Date();
                 // Set the date
                 field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
@@ -41,43 +43,63 @@
                 <div class="consultation-details">
 
                     <div class="input-box">
-                        <span class="details">Subjective Findings</span>
-                        <textarea id="subjective" cols="30" rows="10"></textarea>
+                        <span class="details">Subjective Findings</span><textarea id="subjective" name="subjective"
+                            cols="30" rows="10" class="subjective" required></textarea>
+                        <div id="subjCont"></div>
                         <div class="plan">
                             <button id="subjBtn" class="btn" type="button" id="plus"><i
                                     class="fa-solid fa-circle-plus"></i></button>
+                            <button id="subjMinus" class="btn" type="button"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
                         </div>
-                        <div id="subjCont"></div>
+
+
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Assessment</span>
-                        <textarea id="assessment" name="assessment" cols="30" rows="10"></textarea>
+                        <span class="details">Assessment</span><textarea id="assessment" name="assessment" cols="30"
+                            rows="10" class="assessment" required></textarea>
+                        <div id="assessCont"></div>
                         <div class="plan">
                             <button id="assessBtn" class="btn" type="button" id="plus"><i
                                     class="fa-solid fa-circle-plus"></i></button>
+                            <button id="assessMinus" class="btn" id="minus" type="button"><i
+                                    class="fa-solid fa-circle-minus" type="button"></i></button>
                         </div>
-                        <div id="assessCont"></div>
+
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Objective Findings</span>
-                        <textarea id="objective" name="objective" cols="30" rows="10"></textarea>
+                        <span class="details">Objective Findings</span><textarea id="objective" name="objective"
+                            cols="30" rows="10" class="objective" required></textarea>
+                        <div id="objCont"></div>
                         <div class="plan">
                             <button id="objBtn" class="btn" type="button" id="plus"><i
                                     class="fa-solid fa-circle-plus"></i></button>
+                            <button id="objMinus" class="btn" id="minus" type="button"><i
+                                    class="fa-solid fa-circle-minus" type="button"></i></button>
                         </div>
-                        <div id="objCont"></div>
+
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Plan</span>
-                        <textarea id="plan" name="plan" cols="30" rows="10"></textarea>
+                        <div class="plan">
+                            <span class="details" style="display: inline">Plan</span>
+                            <select id="opt">
+                                <option value="Medical">Medication</option>
+                                <option value="opt_2">Lab</option>
+                                <option value="opt_2">Others</option>
+                            </select>
+                        </div>
+                        <textarea id="plan" name="plan" cols="30" rows="10" class="planText" required></textarea>
+                        <div id="planCont"></div>
                         <div class="plan">
                             <button id="planBtn" class="btn" type="button" id="plus"><i
                                     class="fa-solid fa-circle-plus"></i></button>
+                            <button id="planMinus" class="btn" id="minus" type="button"><i
+                                    class="fa-solid fa-circle-minus" type="button"></i></button>
                         </div>
-                        <div id="planCont"></div>
+
                     </div>
 
                     <!--
@@ -93,23 +115,8 @@
                             
                         </div>
                         -->
-                    <div class="upload-file">
-                        <input type="file" id="upload" value="Upload File" hidden>
-                        <label for="upload">
-                            <p><i class="fa-solid fa-upload"></i> Upload File</p>
-                        </label>
-                    </div>
 
-                    <div class="plan">
-                        <button class="btn" id="plus"><i class="fa-solid fa-circle-plus"></i></button>
-                        <button class="btn" id="minus"><i class="fa-solid fa-circle-minus"></i></button>
-                        <select id="opt">
-                            <option value="Medical">Medication</option>
-                            <option value="opt_2">Option 2</option>
-                            <option value="opt_3">Option 3</option>
-                            <input type="text">
-                        </select>
-                    </div>
+
 
                 </div>
                 <div class="button">
@@ -130,6 +137,6 @@
     </div>
 </body>
 
-<script src="/js/addConsult.js"></script>
+<script src="/js/editConsult.js"></script>
 
 </html>
