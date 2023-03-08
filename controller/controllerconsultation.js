@@ -114,6 +114,28 @@ const controllerConsultation = {
         }
     },
 
+    //Get delete consultation
+
+    deleteConsultation: async (req, res) => {
+        if (req.session.username) {
+            const patientId = req.params.patientId;
+            const consultationId = req.params.consultationId;
+
+            Consultation.findByIdAndRemove({ patientID: patientId, _id: consultationId } , function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.redirect(`/patient/${patientId}`);
+                }
+            });
+        }
+        else {
+            message = 'Login to proceed.';
+            console.log('Login to proceed.');
+            res.redirect('/user/login');
+        }
+    },
+
     uploadFile: async (req, res) => {
         // Stuff to be added later
         // console.log(req.file)

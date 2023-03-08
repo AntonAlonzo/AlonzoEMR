@@ -62,6 +62,7 @@ app.get('/patient/:patientId/newConsultation', controllerConsultation.createCons
 app.post('/patient/:patientId', controllerConsultation.addConsultation);
 app.get('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultationPage);
 app.patch('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultation);
+app.get('/patient/:patientId/deleteConsultation/:consultationId', controllerConsultation.deleteConsultation);
 app.post('/patient/:patientId/newFile/:consultationId', upload.single("myFile"), controllerConsultation.uploadFile);
 app.delete('/delete_file/:consultationId/:fileId', controllerConsultation.deleteFile);
 

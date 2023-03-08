@@ -115,7 +115,6 @@ const controllerPatient = {
     deletePatient: async (req, res) => {
         const patientId = req.params.patientId;
 
-
         Patient.findByIdAndRemove(patientId , function (err) {
             if (err) {
                 console.log(err);

@@ -103,13 +103,18 @@
                     <%= currentConsult.formatDate(currentConsult.date)%>
                     <div class="edit">
                         <button onclick="consultFunction()" class="editconsult burger">
-                            <i class="fa fa-bars"></i>
+                            <i class="fa fa-bars"></i> <!-- not sure why button is buggy -->
                         </button>
                         <div id="consultDrop" class="consult-content">
                             <button class="above-option"
-                                onclick="window.location.href='/patient/:patientId/editConsultation/:consultationId'">
+                                onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'">
                                 <!--ADD LINK-->
                                 Edit Info
+                            </button>
+                            <button class="above-option"
+                                onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'">
+                                <!--ADD LINK-->
+                                Delete
                             </button>
                         </div>
                     </div>
@@ -201,21 +206,23 @@
                                     Labs
                                     <% if(currentConsult) { %>
                                         <% for(let i=0; i < currentConsult.plan.length; i++) { %>
-                                <li class="circle">
-                                    <%= currentConsult.plan[i] %>
-                                </li>
-                                <% } %>
+                                            <li class="circle">
+                                                <%= currentConsult.plan[i] %>
+                                            </li>
+                                        <% } %>
                                     <% } %>
-                                        </li>
-                                        <li style="font-weight: bold;">
-                                            Meds
-                                        <li class="circle">
-                                            <!--REPLACE WITH VARIABLES-->
-                                            N/A
-                                        </li>
-                                        </li>
+                                </li>
+                                <li style="font-weight: bold;">
+                                    Meds
+                                    <li class="circle">
+                                        <!--REPLACE WITH VARIABLES-->
+                                        N/A
+                                    </li>
+                                </li>
                             </ul>
                         </div>
+
+                        <!-- Upload File -->
                         <form
                             action="/patient/<%= currentConsult.patientID %>/newFile/<%= currentConsult._id %>"
                             enctype="multipart/form-data" method="POST">
