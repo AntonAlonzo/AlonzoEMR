@@ -75,7 +75,7 @@ const controllerPatient = {
                     if (err) {
                         console.log(err);
                     } else {
-                        res.redirect('/');
+                        res.redirect(`/patient/${patientId}`);
                     }
                 });
 
