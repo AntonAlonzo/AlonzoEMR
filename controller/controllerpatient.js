@@ -111,6 +111,25 @@ const controllerPatient = {
         var searchPatients = await Patient.find({ $text: { $search: q } }).sort({ 'date': -1 });
         res.render('patient/searchPatient', { q, searchPatients });
     },
+
+    deletePatient: async (req, res) => {
+        const patientId = req.params.patientId;
+
+
+        Patient.findByIdAndRemove(patientId , function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                Consultation.deleteMany({ patientID: patientId } ,  function (err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.redirect("/");
+                    }
+                });
+            }
+        });
+    },
 }
 
 module.exports = controllerPatient;

@@ -52,9 +52,12 @@ app.get('/patient/new', controllerPatient.createPatient);
 app.post('/patient', controllerPatient.addPatient);
 app.get('/patient/:patientId', controllerPatient.viewPatient);
 app.get('/patients/search', controllerPatient.searchPatients);
+app.get('/patients/patient/:patientId', controllerPatient.viewPatient); // view patient record after search
+app.get('/patient/edit/:patientId', controllerPatient.editPatient);
+app.post('/patient/modify/:patientId', controllerPatient.modifyPatient);
+app.get('/patient/delete/:patientId', controllerPatient.deletePatient);
 
 //Consultation
-
 app.get('/patient/:patientId/newConsultation', controllerConsultation.createConsultation);
 app.post('/patient/:patientId', controllerConsultation.addConsultation);
 app.get('/patient/:patientId/editConsultation/:consultationId', controllerConsultation.editConsultationPage);
@@ -62,9 +65,5 @@ app.patch('/patient/:patientId/editConsultation/:consultationId', controllerCons
 app.post('/patient/:patientId/newFile/:consultationId', upload.single("myFile"), controllerConsultation.uploadFile);
 app.delete('/delete_file/:consultationId/:fileId', controllerConsultation.deleteFile);
 
-// Search
-app.get('/patients/patient/:patientId', controllerPatient.viewPatient);
-app.get('/patient/edit/:patientId', controllerPatient.editPatient);
-app.post('/patient/modify/:patientId', controllerPatient.modifyPatient);
 
 module.exports = app;

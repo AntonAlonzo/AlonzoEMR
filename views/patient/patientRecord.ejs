@@ -28,309 +28,278 @@
 
     <!-- Formatting Birthdate -->
     <%var dateString=patient.birthday;%>
-        <%dateString=new Date(dateString).toLocaleDateString();%>
+    <%dateString=new Date(dateString).toLocaleDateString();%>
 
-            <!-- Calculating Age -->
-            <%const now=new Date();%>
-                <%const diff=Math.abs(now - patient.birthday );%>
-                    <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
+    <!-- Calculating Age -->
+    <%const now=new Date();%>
+    <%const diff=Math.abs(now - patient.birthday );%>
+    <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
 
-                        <!-- Determining Type of Consult for div tag -->
-                        <%var consult="" %>
-                            <%if (patient.type==="Surgical" ) {%>
-                                <%consult="surgical" ; }%>
-                                    <%if (patient.type==="Purely Medical" ) {%>
-                                        <%consult="medical" ; }%>
-                                            <%if (patient.type==="Checkup" ) {%>
-                                                <%consult="checkup" ; }%>
-
-
-                                                    <div id="page">
-                                                        <div id="info">
-                                                            <!--lastName, firstName middleName(just the initial).-->
-                                                            <h3>
-                                                                <%= patient.lastName %>, <%= patient.firstName %>
-                                                                        <%= patient.middleName.charAt(0) %>.
-                                                                            <div class="edit">
-                                                                                <button onclick="demoFunction()"
-                                                                                    class="editdemo burger">
-                                                                                    <i class="fa fa-bars"></i>
-                                                                                </button>
-                                                                                <div id="demoDrop" class="demo-content">
-                                                                                    <button class="above-option"
-                                                                                        onclick="window.location.href='/patient/edit/<%= patient._id %>'">
-                                                                                        Edit Info
-                                                                                    </button>
-                                                                                    <!--
-                        <a href="#about">Minimize Info</a>
-                        -->
-                                                                                </div>
-                                                                            </div>
-                                                            </h3>
-                                                            <div id="demographic">
-                                                                <div class="demo graphic">
-                                                                    <div class="demo">
-                                                                        <b>Age:<br>Gender:<br>Occupation:<br>Referred
-                                                                            by:</b>
-                                                                    </div>
-                                                                    <div class="demo">
-                                                                        <!--REPLACE WITH VARIABLES-->
-                                                                        <%= age %>
-                                                                            <br>
-                                                                            <%= patient.gender %>
-                                                                                <br>
-                                                                                <%= patient.occupation %>
-                                                                                    <br>
-                                                                                    <%= patient.referral %>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="demo">
-                                                                    <div class="demo space">
-                                                                        <b>Birthday:<br>Contact:<br>Address:</b>
-                                                                    </div>
-                                                                    <div class="demo">
-                                                                        <!--REPLACE WITH VARIABLES-->
-                                                                        <%= dateString %>
-                                                                            <br>
-                                                                            <%= patient.contactNumber %>
-                                                                                <br>
-                                                                                <%= patient.address %>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="consultation">
-                                                        <h3 class="consult-title">
-                                                            CONSULTATIONS
-                                                        </h3>
-                                                    </div>
-                                                    <!--JS CODE to generate consultation instances-->
-                                                    <% for (let currentConsult of consultations) { %>
-                                                        <div id="consultation">
-                                                            <div class="consult-instance">
-                                                                <div class="date">
-                                                                    <!--REPLACE WITH VARIABLES-->
-                                                                    <%= currentConsult.formatDate(currentConsult.date)
-                                                                        %>
-                                                                        <div class="edit">
-                                                                            <button onclick="consultFunction()"
-                                                                                class="editconsult burger">
-                                                                                <i class="fa fa-bars"></i>
-                                                                            </button>
-                                                                            <div id="consultDrop"
-                                                                                class="consult-content">
-                                                                                <button class="above-option"
-                                                                                    onclick="window.location.href=''">
-                                                                                    <!--ADD LINK-->
-                                                                                    Edit Info
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="consultation">
-                                                                    <div>
-                                                                        <div class="split">
-                                                                            <div class="title">
-                                                                                Subjective Findings
-                                                                            </div>
-                                                                            <ul class="list">
-                                                                                <!--REPLACE WITH VARIABLES-->
-                                                                                <% if(currentConsult) { %>
-                                                                                    <% for(let i=0; i <
-                                                                                        currentConsult.subjective.length;
-                                                                                        i++) { %>
-                                                                                        <li>
-                                                                                            <%= currentConsult.subjective[i]
-                                                                                                %>
-                                                                                        </li>
-                                                                                        <% } %>
-                                                                                            <% } %>
-                                                                            </ul>
-                                                                            <div class="title">
-                                                                                Objective Findings
-                                                                            </div>
-                                                                            <ul class="list">
-                                                                                <!--REPLACE WITH VARIABLES-->
-                                                                                <% if(currentConsult) { %>
-                                                                                    <% for(let i=0; i <
-                                                                                        currentConsult.objective.length;
-                                                                                        i++) { %>
-                                                                                        <li>
-                                                                                            <%= currentConsult.objective[i]
-                                                                                                %>
-                                                                                        </li>
-                                                                                        <% } %>
-                                                                                            <% } %>
+    <!-- Determining Type of Consult for div tag -->
+    <%var consult="" %>
+    <%if (patient.type==="Surgical" ) {%>
+        <%consult="surgical" ; }%>
+    <%if (patient.type==="Purely Medical" ) {%>
+        <%consult="medical" ; }%>
+    <%if (patient.type==="Checkup" ) {%>
+        <%consult="checkup" ; }%>
 
 
-                                                                                                <% for(let file of
-                                                                                                    currentConsult.file)
-                                                                                                    {%>
-                                                                                                    <li>
-                                                                                                        <button
-                                                                                                            class="file">
-                                                                                                            <a href="/<%=file.name %>"
-                                                                                                                class="files__link">
-                                                                                                                <i
-                                                                                                                    class="fa fa-file-text-o"></i>
-                                                                                                                <span
-                                                                                                                    class="files__date">
-                                                                                                                    <%=file.title%>
-                                                                                                                </span>
-                                                                                                                <i class="fa fa-eye tests__icon"
-                                                                                                                    aria-hidden="true"></i></a>
-                                                                                                        </button>
-                                                                                                        <form
-                                                                                                            action="/delete_file/<%= currentConsult._id %>/<%= file._id %>?_method=delete"
-                                                                                                            style="display: inline;"
-                                                                                                            method="post">
+    <div id="page">
+        <div id="info">
+            <!--lastName, firstName middleName(just the initial).-->
+            <h3>
+                <%= patient.lastName %>, <%= patient.firstName %> <%= patient.middleName.charAt(0) %>.
+                <div class="edit">
+                    <button onclick="demoFunction()" class="editdemo burger">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div id="demoDrop" class="demo-content">
+                        <button class="above-option"
+                            onclick="window.location.href='/patient/edit/<%= patient._id %>'">
+                            Edit Info
+                        </button>
+                        <!-- <a href="#about">Minimize Info</a> -->
+                        <button class="above-option"
+                            onclick="window.location.href='/patient/delete/<%= patient._id %>'">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </h3>
+            <div id="demographic">
+                <div class="demo graphic">
+                    <div class="demo">
+                        <b>Age:<br>Gender:<br>Occupation:<br>Referred by:</b>
+                    </div>
+                    <div class="demo">
+                        <!--REPLACE WITH VARIABLES-->
+                        <%= age %><br><%= patient.gender %><br><%= patient.occupation %><br><%= patient.referral %>
+                    </div>
+                </div>
+                <div class="demo">
+                    <div class="demo space">
+                        <b>Birthday:<br>Contact:<br>Address:</b>
+                    </div>
+                    <div class="demo">
+                        <!--REPLACE WITH VARIABLES-->
+                        <%= dateString %><br><%= patient.contactNumber %><br><%= patient.address %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="consultation">
+        <h3 class="consult-title">
+            CONSULTATIONS
+        </h3>
+    </div>
+    <!--JS CODE to generate consultation instances-->
+    <% for (let currentConsult of consultations) { %>
+        <div id="consultation">
+            <div class="consult-instance">
+                <div class="date">
+                    <!--REPLACE WITH VARIABLES-->
+                    <%= currentConsult.formatDate(currentConsult.date)%>
+                    <div class="edit">
+                        <button onclick="consultFunction()" class="editconsult burger">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div id="consultDrop" class="consult-content">
+                            <button class="above-option"
+                                onclick="window.location.href='/patient/:patientId/editConsultation/:consultationId'">
+                                <!--ADD LINK-->
+                                Edit Info
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="consultation">
+                    <div>
+                        <div class="split">
+                            <div class="title">
+                                Subjective Findings
+                            </div>
+                            <ul class="list">
+                                <!--REPLACE WITH VARIABLES-->
+                                <% if(currentConsult) { %>
+                                    <% for(let i=0; i < currentConsult.subjective.length; i++) { %>
+                                        <li>
+                                            <%= currentConsult.subjective[i] %>
+                                        </li>
+                                    <% } %>
+                                <% } %>
+                            </ul>
+                            <div class="title">
+                                Objective Findings
+                            </div>
+                            <ul class="list">
+                                <!--REPLACE WITH VARIABLES-->
+                                <% if(currentConsult) { %>
+                                    <% for(let i=0; i < currentConsult.objective.length; i++) { %>
+                                        <li>
+                                            <%= currentConsult.objective[i] %>
+                                        </li>
+                                    <% } %>
+                                <% } %>
 
-                                                                                                            <button
-                                                                                                                class="file">
+                                <% for(let file of currentConsult.file) {%>
+                                    <li>
+                                        <button class="file">
+                                            <a href="/<%=file.name %>" class="files__link">
+                                                <i class="fa fa-file-text-o"></i>
+                                                <span class="files__date">
+                                                    <%=file.title%>
+                                                </span>
+                                                <i class="fa fa-eye tests__icon" aria-hidden="true"></i>
+                                            </a>
+                                        </button>
+                                        <form
+                                            action="/delete_file/<%= currentConsult._id %>/<%= file._id %>?_method=delete"
+                                            style="display: inline;"
+                                            method="post">
 
-                                                                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                                                    width="16"
-                                                                                                                    height="16"
-                                                                                                                    fill="currentColor"
-                                                                                                                    class="bi bi-trash"
-                                                                                                                    viewBox="0 0 16 16">
-                                                                                                                    <path
-                                                                                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                                                                                    <path
-                                                                                                                        fill-rule="evenodd"
-                                                                                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                                                                                </svg>
-                                                                                                            </button>
-                                                                                                        </form>
-                                                                                                    </li>
-                                                                                                    <% } %>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="split">
-                                                                            <div class="title">
-                                                                                Assessment
-                                                                            </div>
-                                                                            <ul class="list">
-                                                                                <!--REPLACE WITH VARIABLES-->
-                                                                                <% if(currentConsult) { %>
-                                                                                    <% for(let i=0; i <
-                                                                                        currentConsult.assessment.length;
-                                                                                        i++) { %>
-                                                                                        <li>
-                                                                                            <%= currentConsult.assessment[i]
-                                                                                                %>
-                                                                                        </li>
-                                                                                        <% } %>
-                                                                                            <% } %>
-                                                                            </ul>
-                                                                            <div class="title">
-                                                                                Plan
-                                                                            </div>
-                                                                            <ul class="list">
-                                                                                <li style="font-weight: bold;">
-                                                                                    Labs
-                                                                                    <% if(currentConsult) { %>
-                                                                                        <% for(let i=0; i <
-                                                                                            currentConsult.plan.length;
-                                                                                            i++) { %>
-                                                                                <li class="circle">
-                                                                                    <%= currentConsult.plan[i] %>
-                                                                                </li>
-                                                                                <% } %>
-                                                                                    <% } %>
-                                                                                        </li>
-                                                                                        <li style="font-weight: bold;">
-                                                                                            Meds
-                                                                                        <li class="circle">
-                                                                                            <!--REPLACE WITH VARIABLES-->
-                                                                                            N/A
-                                                                                        </li>
-                                                                                        </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <form
-                                                                            action="/patient/<%= currentConsult.patientID %>/newFile/<%= currentConsult._id %>"
-                                                                            enctype="multipart/form-data" method="POST">
-                                                                            <input type="text" name="title" id="title"
-                                                                                placeholder="Name of File">
-                                                                            <input type="file" id="myFile"
-                                                                                name="myFile" />
-                                                                            <input class="admin__submit"
-                                                                                type="submit" />
-                                                                        </form>
-                                                                    </div>
+                                            <button class="file">
 
-                                                                </div>
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    width="16"
+                                                    height="16"
+                                                    fill="currentColor"
+                                                    class="bi bi-trash"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </div>
+                        <div class="split">
+                            <div class="title">
+                                Assessment
+                            </div>
+                            <ul class="list">
+                                <!--REPLACE WITH VARIABLES-->
+                                <% if(currentConsult) { %>
+                                    <% for(let i=0; i < currentConsult.assessment.length; i++) { %>
+                                        <li>
+                                            <%= currentConsult.assessment[i] %>
+                                        </li>
+                                    <% } %>
+                                <% } %>
+                            </ul>
+                            <div class="title">
+                                Plan
+                            </div>
+                            <ul class="list">
+                                <li style="font-weight: bold;">
+                                    Labs
+                                    <% if(currentConsult) { %>
+                                        <% for(let i=0; i < currentConsult.plan.length; i++) { %>
+                                <li class="circle">
+                                    <%= currentConsult.plan[i] %>
+                                </li>
+                                <% } %>
+                                    <% } %>
+                                        </li>
+                                        <li style="font-weight: bold;">
+                                            Meds
+                                        <li class="circle">
+                                            <!--REPLACE WITH VARIABLES-->
+                                            N/A
+                                        </li>
+                                        </li>
+                            </ul>
+                        </div>
+                        <form
+                            action="/patient/<%= currentConsult.patientID %>/newFile/<%= currentConsult._id %>"
+                            enctype="multipart/form-data" method="POST">
+                            <input type="text" name="title" id="title"
+                                placeholder="Name of File">
+                            <input type="file" id="myFile"
+                                name="myFile" />
+                            <input class="admin__submit"
+                                type="submit" />
+                        </form>
+                    </div>
 
-                                                            </div>
+                </div>
 
-                                                        </div>
+            </div>
+
+        </div>
 
 
-                                                        <!-- <form
-                                                            action="/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>">
-                                                            <div id="button">
-                                                                <button type="submit" class="square">
-                                                                    <div class="left"><i class="fa fa-plus"></i>
-                                                                    </div>
-                                                                    <div class="right">edit</div>
-                                                                </button>
-                                                            </div>
-                                                        </form> -->
-                                                        <!-- JS Script -->
-                                                        <script type="text/javascript" src="/js/home.js"></script>
-                                                        <!--JS SCRIPT FOR DROPDOWN-->
-                                                        <script>
-                                                            /* When the user clicks on the button, 
-                                                            toggle between hiding and showing the dropdown content */
-                                                            function demoFunction() {
-                                                                document.getElementById("demoDrop").classList.toggle("show");
-                                                            }
+        <!-- <form
+            action="/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>">
+            <div id="button">
+                <button type="submit" class="square">
+                    <div class="left"><i class="fa fa-plus"></i>
+                    </div>
+                    <div class="right">edit</div>
+                </button>
+            </div>
+        </form> -->
+        
+        </div>
+        <% } %>
+            <form action="/patient/<%= patient._id %>/newConsultation">
+                <div id="button">
+                    <button type="submit" class="square">
+                        <div class="left"><i class="fa fa-plus"></i>
+                        </div>
+                        <div class="right">Consultation</div>
+                    </button>
+                </div>
+            </form>
 
-                                                            // Close the dropdown if the user clicks outside of it
-                                                            window.onclick = function (event) {
-                                                                if (!event.target.matches('.editdemo')) {
-                                                                    var dropdowns = document.getElementsByClassName("demo-content");
-                                                                    var i;
-                                                                    for (i = 0; i < dropdowns.length; i++) {
-                                                                        var openDropdown = dropdowns[i];
-                                                                        if (openDropdown.classList.contains('show')) {
-                                                                            openDropdown.classList.remove('show');
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
+    <!-- JS Script -->
+    <script type="text/javascript" src="/js/home.js"></script>
+    <!--JS SCRIPT FOR DROPDOWN-->
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function demoFunction() {
+            document.getElementById("demoDrop").classList.toggle("show");
+        }
 
-                                                            function consultFunction() {
-                                                                document.getElementById("consultDrop").classList.toggle("show");
-                                                            }
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.editdemo')) {
+                var dropdowns = document.getElementsByClassName("demo-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
 
-                                                            // Close the dropdown if the user clicks outside of it
-                                                            window.onclick = function (event) {
-                                                                if (!event.target.matches('.editconsult')) {
-                                                                    var dropdowns = document.getElementsByClassName("consult-content");
-                                                                    var i;
-                                                                    for (i = 0; i < dropdowns.length; i++) {
-                                                                        var openDropdown = dropdowns[i];
-                                                                        if (openDropdown.classList.contains('show')) {
-                                                                            openDropdown.classList.remove('show');
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        </script>
-                                                        </div>
-                                                        <% } %>
-                                                            <form action="/patient/<%= patient._id %>/newConsultation">
-                                                                <div id="button">
-                                                                    <button type="submit" class="square">
-                                                                        <div class="left"><i class="fa fa-plus"></i>
-                                                                        </div>
-                                                                        <div class="right">Consultation</div>
-                                                                    </button>
-                                                                </div>
-                                                            </form>
+        function consultFunction() {
+            document.getElementById("consultDrop").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.editconsult')) {
+                var dropdowns = document.getElementsByClassName("consult-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 
