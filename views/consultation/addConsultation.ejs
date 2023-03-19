@@ -30,7 +30,7 @@
 
                 <div class="today">
                     <label for="date">Date: </label>
-                    <input id="date" type="date" name="date">
+                    <input id="date" type="date" name="date" <p> Edit Date</p> 
                     <script>
                         var field = document.querySelector('#date');
                         var date = new Date();
@@ -38,6 +38,7 @@
                         field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
                             '-' + date.getDate().toString().padStart(2, 0)
                     </script>
+                    
                 </div>
 
 
@@ -92,7 +93,7 @@
                                 <option value="Others">Others</option>
                             </select>
                         </div>
-                        <textarea id="plan" name="plandescription" cols="30" rows="10" class="planText"
+                        <textarea id="plan" name="plandescription" class="planText"
                             required></textarea>
                         <div id="planCont"></div>
                         <div class="plan">

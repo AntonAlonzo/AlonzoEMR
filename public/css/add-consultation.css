@@ -44,7 +44,7 @@ h1 {
 
 .today input {
     border: none;
-    background: #F1F4FE;
+    background: #ffffff;
     color: #555871;
     font-size: 18px;
     font-weight: bold;
@@ -72,9 +72,9 @@ form .consultation-details .input-box {
 
 .consultation-details .input-box .details {
     display: block;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 5px;
-    color: #1f2664;
+    color: #4f4f52;
 }
 
 .consultation-details .input-box textarea {
@@ -87,6 +87,7 @@ form .consultation-details .input-box {
     font-size: 14px;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    margin-top: 5px;
 }
 
 .consultation_details .input-box textarea:focus {
@@ -99,13 +100,12 @@ form .consultation-details .input-box {
     cursor: pointer;
 }
 
-.plan #plus {
+.plan .btn{
     color: #287EFC;
+    padding: 2px;
 }
 
-.plan #minus {
-    color: #FF4545;
-}
+
 
 #opt {
     font-size: 16px;
@@ -132,6 +132,10 @@ form .consultation-details .input-box {
     border-radius: 10px;
     cursor: pointer;
     width: 115px;
+}
+
+.input-box #plan {
+    margin-top: 10px;
 }
 
 .upload-file label {
