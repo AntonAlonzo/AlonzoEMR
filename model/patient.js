@@ -20,12 +20,6 @@ const patientSchema = new mongoose.Schema({
         required: true,
         index: true
     },
-    type: {
-        type: String,
-        enum: ['Surgical', 'Purely Medical', 'Checkup'],
-        required: true,
-        index: true
-    },
     gender: {
         type: String,
         enum: ['Male', 'Female'],

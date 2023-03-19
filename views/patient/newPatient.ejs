@@ -11,22 +11,23 @@
 <body>
     <div class="container">
         <div class="title">Add Patient</div>
-        <form action="/patient" method="post">
+        <form action="/patient" method="post" autocomplete="off">
             <div class="user-details">
 
                 <div class="input-box">
                     <span class="details">Last Name</span>
-                    <input type="text" name="lastName" required>
+                    <input type="text" name="lastName" autocomplete="off" readonly
+                        onfocus="this.removeAttribute('readonly');" required>
                 </div>
 
                 <div class="input-box">
                     <span class="details">First Name</span>
-                    <input type="text" name="firstName" required>
+                    <input type="text" name="firstName" autocomplete="off" required>
                 </div>
 
                 <div class="input-box">
                     <span class="details">Middle Name</span>
-                    <input type="text" name="middleName" required>
+                    <input type="text" name="middleName" autocomplete="off" required>
                 </div>
 
                 <div class="input-box">
@@ -39,12 +40,12 @@
 
                 <div class="input-box">
                     <span class="details">Address</span>
-                    <input type="text" name="address" required>
+                    <input type="text" name="address" autocomplete="off" required>
                 </div>
 
                 <div class="input-box">
                     <span class="details">Contact Details</span>
-                    <input type="text" name="contactNumber" value="+63" required>
+                    <input type="text" name="contactNumber" value="+63" autocomplete="off" required>
                 </div>
 
                 <div class="input-box">
@@ -54,23 +55,13 @@
 
                 <div class="input-box">
                     <span class="details">Occupation</span>
-                    <input type="text" name="occupation" required>
+                    <input type="text" name="occupation" autocomplete="off" required>
                 </div>
 
-                <div class="input-box">
-                    <label for="type" class="details">Type</label>
-                    <select name="type" id="opt">
-                        <% for(let type of types) { %>
-                            <option value="<%= type %>">
-                                <%= type %>
-                            </option>
-                            <% } %>
-                    </select>
-                </div>
 
                 <div class="input-box">
                     <span class="details">Referred by</span>
-                    <input type="text" name="referral" required>
+                    <input type="text" name="referral" autocomplete="off" required>
                 </div>
 
             </div>

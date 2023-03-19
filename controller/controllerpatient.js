@@ -108,18 +108,41 @@ const controllerPatient = {
 
     searchPatients: async (req, res) => {
         var { q } = req.query;
-        var searchPatients = await Patient.find({ $text: { $search: q } }).sort({ 'date': -1 });
+
+
+        var idArr = [];
+
+        var searchConsultation = await Consultation.find({ $text: { $search: q } });
+        console.log(searchConsultation);
+
+        if (Array.isArray(searchConsultation)) {
+            for (let i = 0; i < searchConsultation.length; i++) {
+                idArr.push(searchConsultation[i].patientID);
+            }
+        };
+
+        var searchPatients = await Patient.find({
+            '_id': {
+                $in: idArr
+            }
+        });
+
+        if (idArr.length == 0) {
+            searchPatients = await Patient.find({ $text: { $search: q } }).sort({ 'date': -1 });
+        };
+
+        console.log(searchPatients);
         res.render('patient/searchPatient', { q, searchPatients });
     },
 
     deletePatient: async (req, res) => {
         const patientId = req.params.patientId;
 
-        Patient.findByIdAndRemove(patientId , function (err) {
+        Patient.findByIdAndRemove(patientId, function (err) {
             if (err) {
                 console.log(err);
             } else {
-                Consultation.deleteMany({ patientID: patientId } ,  function (err) {
+                Consultation.deleteMany({ patientID: patientId }, function (err) {
                     if (err) {
                         console.log(err);
                     } else {

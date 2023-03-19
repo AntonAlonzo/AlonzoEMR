@@ -107,12 +107,42 @@ function planPush(req, res) {
     ul.setAttribute('id', 'theList');
 
     for (planCount; planCount <= planArr.length - 1; planCount++) {
-        var newInput = document.createElement('textarea')
+
+        var newCategory = document.createElement('div');
+        newCategory.setAttribute('class', 'plan');
+
+
+        var newSelect = document.createElement('select');
+        newSelect.setAttribute('name', 'category');
+        newSelect.setAttribute('id', 'opt');
+
+        var firstOption = document.createElement('option');
+        var secondOption = document.createElement('option');
+        var thirdOption = document.createElement('option');
+
+        firstOption.setAttribute('value', 'Medications');
+        secondOption.setAttribute('value', 'Laboratory');
+        thirdOption.setAttribute('value', 'Others');
+
+        firstOption.innerHTML = "Medications";
+        secondOption.innerHTML = "Laboratory";
+        thirdOption.innerHTML = "Others";
+
+        newSelect.appendChild(firstOption);
+        newSelect.appendChild(secondOption);
+        newSelect.appendChild(thirdOption);
+
+        newCategory.appendChild(newSelect);
+
+        var newInput = document.createElement('textarea');
         newInput.value = "";
-        newInput.setAttribute('name', 'plan');
+        newInput.setAttribute('name', 'plandescription');
         newInput.setAttribute('class', 'planText');
         newInput.required = true;
-        ul.appendChild(newInput);
+
+        newCategory.appendChild(newInput);
+
+        ul.appendChild(newCategory);
     }
 
     planCont.appendChild(ul);       // add list to the c

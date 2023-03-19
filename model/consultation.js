@@ -9,13 +9,27 @@ const consultationSchema = new mongoose.Schema({
         String
     ],
     assessment: [
-        String
+        {
+            type: String,
+            index: true
+        }
     ],
     objective: [
         String
     ],
     plan: [
-        String
+        {
+            description: {
+                type: String,
+                required: true,
+                index: true
+            },
+            category: {
+                type: String,
+                enum: ['Medications', 'Laboratory', 'Others'],
+                required: true
+            },
+        }
     ],
     date: {
         type: Date,
@@ -55,6 +69,8 @@ consultationSchema.methods.formatDate = function (dateProperty) {
     return formattedDate;
 }
 
-const Consultation = mongoose.model('Consultation', consultationSchema);
 
+consultationSchema.index({ assessment: 'text', "plan.description": 'text' });
+const Consultation = mongoose.model('Consultation', consultationSchema);
+Consultation.createIndexes();
 module.exports = Consultation;

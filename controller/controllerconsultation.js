@@ -54,6 +54,22 @@ const controllerConsultation = {
             const { patientId } = req.params;
             var data = req.body;
 
+            console.log(req.body.plandescription)
+
+            var planData = [];
+
+            var multipleData = Array.isArray(req.body.category);
+
+            if (multipleData) {
+                for (let i = 0; i < req.body.plandescription.length; i++) {
+                    tempData = { category: req.body.category[i], description: req.body.plandescription[i] };
+                    planData.push(tempData);
+                }
+            }
+            else {
+                tempData = { category: req.body.category, description: req.body.plandescription };
+                planData.push(tempData);
+            }
 
             data.patientID = patientId;
             data.date = req.body.date;
@@ -61,6 +77,11 @@ const controllerConsultation = {
                 data.date = Date.now();
             }
             var newData = new Consultation(data);
+            for (let i = 0; i < planData.length; i++) {
+                newData.plan.push(planData[i]);
+                console.log(planData[i]);
+            }
+
             await newData.save()
                 .then(async () => {
                     res.redirect(`/patient/${patientId}`);
@@ -121,7 +142,7 @@ const controllerConsultation = {
             const patientId = req.params.patientId;
             const consultationId = req.params.consultationId;
 
-            Consultation.findByIdAndRemove({ patientID: patientId, _id: consultationId } , function (err) {
+            Consultation.findByIdAndRemove({ patientID: patientId, _id: consultationId }, function (err) {
                 if (err) {
                     console.log(err);
                 } else {
