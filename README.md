@@ -1,6 +1,10 @@
 # AlonzoEMR
 CSSWENG Final Project - Electronic Medical Record
 
+*A digital collection of medical information about a person that is stored on a computer*
+
+*includes information about a patient’s health history, such as diagnoses, medicines, tests, allergies, immunizations, and treatment plans.*
+
 Steps to run application locally:
 
 1. Make sure that mongod is open
