@@ -1,9 +1,16 @@
 # AlonzoEMR
 CSSWENG Final Project - Electronic Medical Record
 
-For QAs:
+*A digital collection of medical information about a person that is stored on a computer*
 
-1. go to /user/signup to create an account before logging in
-2. go to /patient/new to create a new patient to test viewing of patients in homepage (the initial prototype requires every field to be filled up, so take note of that lang since it redirects you back to this page if may kulang na field)
-3. be sure to download all packages first before starting hehe, didn't include it here since medyo malaki file if ininclude na dito
-4. run index.js to start the local server
+*includes information about a patient’s health history, such as diagnoses, medicines, tests, allergies, immunizations, and treatment plans.*
+
+Steps to run application locally:
+
+1. Make sure that mongod is open
+2. Open the terminal
+3. In the terminal, go to the directory where the project is placed
+4. In the terminal, type "npm i". This will install all the required dependencies. NOTE - We have included the packages in the file. This is to make sure that all dependencies are up to date with the specified packages.
+5. In the terminal, type "node index.js", this will start the server. Wait for the console to say that the server is open.
+6. Once the server is open, open a browser and type "localhost:3000".
+7. You will be able to view our website already.
