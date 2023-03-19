@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Consultation Page</title>
+    <title>Edit Consultation Page</title>
     <link rel="stylesheet" href="/css/index-style.css">
     <link rel="stylesheet" href="/css/add-consultation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,23 +22,23 @@
 
     <div class="content">
         <h1>EDIT CONSULTATION</h1>
-
-        <div class="today">
-            <label for="date">Date: </label>
-            <input id="today" type="date" name="">
-            <script>
-                var field = document.querySelector('#today');
-                var date = new Date();
-                // Set the date
-                field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
-                    '-' + date.getDate().toString().padStart(2, 0)
-            </script>
-        </div>
-
+        
         <div class="container">
 
             <form action="/patient/<%=patientId%>/editConsultation/<%=currConsult._id%>?_method=patch" method="post">
+                <div class="today">
+                    <label for="date">Date: </label>
+                    <input id="today" type="date" name="date">
+                    <script>
+                        var field = document.querySelector('#today');
+                        var date = new Date();
+                        // Set the date
+                        field.value = date.getFullYear().toString() + '-' + (date.getMonth() + 1).toString().padStart(2, 0) +
+                            '-' + date.getDate().toString().padStart(2, 0)
+                    </script>
+                </div>
                 <div class="consultation-details">
+                    
 
                     <div class="input-box">
                         <span class="details">Subjective Findings</span>
@@ -87,8 +87,16 @@
 
                     <div class="input-box">
                         <span class="details">Plan</span>
-                        <% for(let finding of currConsult.plan) {%> <textarea id="plan" name="plan" cols="30" rows="10"
-                                class="planText" required><%=finding%></textarea>
+                        <% for(let finding of currConsult.plan) {%> 
+                            <select id="opt" name="category">
+                                <option value="<%=finding.category%>" selected hidden>
+                                    <%=finding.category%>
+                                </option>
+                                <option value="Medications">Medication</option>
+                                <option value="Laboratory">Lab</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <textarea id="plan" name="plandescription" class="planText" required><%=finding.description%></textarea>
                             <% } %>
                                 <div id="planCont"></div>
                                 <div class="plan">
@@ -120,7 +128,7 @@
                         </label>
                     </div>
 
-                    <div class="plan">
+                    <!-- <div class="plan">
                         <button class="btn" id="plus"><i class="fa-solid fa-circle-plus"></i></button>
                         <button class="btn" id="minus"><i class="fa-solid fa-circle-minus"></i></button>
                         <select id="opt">
@@ -129,7 +137,7 @@
                             <option value="opt_3">Option 3</option>
                             <input type="text">
                         </select>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="button">

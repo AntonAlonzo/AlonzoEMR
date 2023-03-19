@@ -30,7 +30,7 @@
 
                 <div class="today">
                     <label for="date">Date: </label>
-                    <input id="date" type="date" name="date">
+                    <input id="date" type="date" name="date"> Edit Date
                     <script>
                         var field = document.querySelector('#date');
                         var date = new Date();
@@ -44,8 +44,8 @@
                 <div class="consultation-details">
 
                     <div class="input-box">
-                        <span class="details">Subjective Findings</span><textarea id="subjective" name="subjective"
-                            cols="30" rows="10" class="subjective" required></textarea>
+                        <span class="details">Subjective Findings</span>
+                        <textarea id="subjective" name="subjective" cols="30" rows="10" class="subjective" required></textarea>
                         <div id="subjCont"></div>
                         <div class="plan">
                             <button id="subjBtn" class="btn" type="button" id="plus"><i
@@ -70,7 +70,7 @@
 
                     </div>
 
-                    <div class="input-box">
+                    <div id="objf" class="input-box">
                         <span class="details">Objective Findings</span><textarea id="objective" name="objective"
                             cols="30" rows="10" class="objective" required></textarea>
                         <div id="objCont"></div>
@@ -84,15 +84,16 @@
                     </div>
 
                     <div class="input-box">
+                        <span id="plan-label" class="details" style="display: inline">Plan</span>
                         <div class="plan">
-                            <span class="details" style="display: inline">Plan</span>
+                            <!-- <span class="details" style="display: inline">Plan</span><br> -->
                             <select id="opt" name="category">
                                 <option value="Medications">Medication</option>
                                 <option value="Laboratory">Lab</option>
                                 <option value="Others">Others</option>
                             </select>
                         </div>
-                        <textarea id="plan" name="plandescription" cols="30" rows="10" class="planText"
+                        <textarea id="plan" name="plandescription" class="planText"
                             required></textarea>
                         <div id="planCont"></div>
                         <div class="plan">

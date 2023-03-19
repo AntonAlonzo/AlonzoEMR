@@ -17,6 +17,16 @@
     <script src="https://kit.fontawesome.com/b68b4fe106.js" crossorigin="anonymous"></script>
     <!--ADD JS CODE HERE-->
     <script type="text/javascript" src=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    
+    <style>
+        .above-option {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #192039;
+            font-family: 'Rubik', sans-serif;
+        }
+        </style>
 </head>
 
 <body>
@@ -35,16 +45,6 @@
                 <%const diff=Math.abs(now - patient.birthday );%>
                     <%const age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); %>
 
-                        <!-- Determining Type of Consult for div tag -->
-                        <%var consult="" %>
-                            <%if (patient.type==="Surgical" ) {%>
-                                <%consult="surgical" ; }%>
-                                    <%if (patient.type==="Purely Medical" ) {%>
-                                        <%consult="medical" ; }%>
-                                            <%if (patient.type==="Checkup" ) {%>
-                                                <%consult="checkup" ; }%>
-
-
                                                     <div id="page">
                                                         <div id="info">
                                                             <!--lastName, firstName middleName(just the initial).-->
@@ -56,7 +56,7 @@
                                                                                     class="editdemo burger">
                                                                                     <i class="fa fa-bars"></i>
                                                                                 </button>
-                                                                                <div id="demoDrop" class="demo-content">
+                                                                                <div id="demoDrop" class="demo-content" onmouseleave="demoFunction()">
                                                                                     <button class="above-option"
                                                                                         onclick="window.location.href='/patient/edit/<%= patient._id %>'">
                                                                                         Edit Info
@@ -110,25 +110,40 @@
                                                                     <!--REPLACE WITH VARIABLES-->
                                                                     <%= currentConsult.formatDate(currentConsult.date)%>
                                                                         <div class="edit">
-                                                                            <button onclick="consultFunction()"
-                                                                                class="editconsult burger">
-                                                                                <i class="fa fa-bars"></i>
-                                                                                <!-- not sure why button is buggy -->
-                                                                            </button>
-                                                                            <div id="consultDrop"
-                                                                                class="consult-content">
-                                                                                <button class="above-option"
+                                                                            <!-- <button onclick="consultFunction()" class="editconsult burger">
+                                                                                <i class="fa fa-bars"></i> 
+                                                                            </button> -->
+                                                                            <!-- <div id="consultDrop" onmouseleave="consultFunction()" class="consult-content"> -->
+                                                                                <button class="above-option" 
                                                                                     onclick="window.location.href='/patient/<%= patient._id %>/editConsultation/<%= currentConsult._id %>'">
-                                                                                    <!--ADD LINK-->
                                                                                     Edit Info
                                                                                 </button>
                                                                                 <button class="above-option"
                                                                                     onclick="window.location.href='/patient/<%= patient._id %>/deleteConsultation/<%= currentConsult._id %>'">
-                                                                                    <!--ADD LINK-->
+                                                                                    Delete
+                                                                                </button>
+                                                                            <!-- </div> -->
+                                                                        </div>
+                                                                        <!-- TRIAL -->
+                                                                        <!-- <div class="edit">
+                                                                            <button onclick="demoFunction()" class="editdemo burger">
+                                                                                <i class="fa fa-bars"></i>
+                                                                            </button>
+                                                                            <div id="demoDrop" class="demo-content">
+                                                                                <button class="above-option"
+                                                                                    onclick="window.location.href='/patient/edit/<%= patient._id %>'">
+                                                                                    Edit Info
+                                                                                </button>
+                                                                                <button class="above-option"
+                                                                                    onclick="window.location.href='/patient/delete/<%= patient._id %>'">
                                                                                     Delete
                                                                                 </button>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> -->
+
+
+
+
                                                                 </div>
                                                                 <div class="consultation">
                                                                     <div>
@@ -169,7 +184,7 @@
                                                                                                     currentConsult.file)
                                                                                                     {%>
                                                                                                     <li>
-                                                                                                        <button
+                                                                                                        <button 
                                                                                                             class="file">
                                                                                                             <a href="/<%=file.name %>"
                                                                                                                 class="files__link">
@@ -304,11 +319,11 @@
                                                                         <form
                                                                             action="/patient/<%= currentConsult.patientID %>/newFile/<%= currentConsult._id %>"
                                                                             enctype="multipart/form-data" method="POST">
-                                                                            <input type="text" name="title" id="title"
+                                                                            <input type="text" name="title" id="title" 
                                                                                 placeholder="Name of File" required>
-                                                                            <input type="file" id="myFile" name="myFile"
+                                                                            <input type="file" id="myFile" name="myFile" 
                                                                                 required>
-                                                                            <input class="admin__submit"
+                                                                            <input class="admin__submit above-option"
                                                                                 type="submit" />
                                                                         </form>
                                                                     </div>
@@ -354,36 +369,36 @@
                                                                 }
 
                                                                 // Close the dropdown if the user clicks outside of it
-                                                                window.onclick = function (event) {
-                                                                    if (!event.target.matches('.editdemo')) {
-                                                                        var dropdowns = document.getElementsByClassName("demo-content");
-                                                                        var i;
-                                                                        for (i = 0; i < dropdowns.length; i++) {
-                                                                            var openDropdown = dropdowns[i];
-                                                                            if (openDropdown.classList.contains('show')) {
-                                                                                openDropdown.classList.remove('show');
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
+                                                                // window.onclick = function (event) {
+                                                                //     if (!event.target.matches('.editdemo')) {
+                                                                //         var dropdowns = document.getElementsByClassName("demo-content");
+                                                                //         var i;
+                                                                //         for (i = 0; i < dropdowns.length; i++) {
+                                                                //             var openDropdown = dropdowns[i];
+                                                                //             if (openDropdown.classList.contains('show')) {
+                                                                //                 openDropdown.classList.remove('show');
+                                                                //             }
+                                                                //         }
+                                                                //     }
+                                                                // }
 
                                                                 function consultFunction() {
                                                                     document.getElementById("consultDrop").classList.toggle("show");
                                                                 }
 
                                                                 // Close the dropdown if the user clicks outside of it
-                                                                window.onclick = function (event) {
-                                                                    if (!event.target.matches('.editconsult')) {
-                                                                        var dropdowns = document.getElementsByClassName("consult-content");
-                                                                        var i;
-                                                                        for (i = 0; i < dropdowns.length; i++) {
-                                                                            var openDropdown = dropdowns[i];
-                                                                            if (openDropdown.classList.contains('show')) {
-                                                                                openDropdown.classList.remove('show');
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
+                                                                // window.onclick = function (event) {
+                                                                //     if (!event.target.matches('.editconsult')) {
+                                                                //         var dropdowns = document.getElementsByClassName("consult-content");
+                                                                //         var i;
+                                                                //         for (i = 0; i < dropdowns.length; i++) {
+                                                                //             var openDropdown = dropdowns[i];
+                                                                //             if (openDropdown.classList.contains('show')) {
+                                                                //                 openDropdown.classList.remove('show');
+                                                                //             }
+                                                                //         }
+                                                                //     }
+                                                                // }
                                                             </script>
 </body>
 

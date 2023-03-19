@@ -123,9 +123,45 @@ const controllerConsultation = {
             const { consultationId } = req.params;
             console.log(req.params.patientId);
             const data = req.body;
+// asdka
+            console.log(req.body.plandescription)
+            console.log(req.body.category)
 
-            const { date, subjective, assessment, objective, plan } = data;
-            await Consultation.findByIdAndUpdate(consultationId, { date, subjective, assessment, objective, plan })
+            var planData = [];
+
+            var multipleData = Array.isArray(req.body.plandescription);
+
+            if (multipleData) {
+                for (let i = 0; i < req.body.plandescription.length; i++) {
+                    tempData = { category: req.body.category[i], description: req.body.plandescription[i] };
+                    planData.push(tempData);
+                }
+            }
+            else {
+                tempData = { category: req.body.category, description: req.body.plandescription };
+                planData.push(tempData);
+            }
+
+            // data.patientID = patientId;
+            data.date = req.body.date;
+            if (!data.date) {
+                data.date = Date.now();
+            }
+
+            var newData = new Consultation(data);
+            for (let i = 0; i < planData.length; i++) {
+                newData.plan.push(planData[i]);
+                console.log(planData[i]);
+            }
+// ksjdhf   
+            
+            var { date, subjective, assessment, objective} = data;
+            var newplan = newData.plan
+            console.log(newplan)
+            // await Consultation.findByIdAndUpdate(consultationId, { date, subjective, assessment, objective, newplan })
+            await Consultation.findByIdAndUpdate(consultationId,
+                { date, subjective, assessment, objective, plan: newplan }
+              );
             res.redirect(`/patient/${req.params.patientId}`);
         }
         else {
