@@ -54,7 +54,7 @@ h1 {
     max-width: 850px;
     width: 100%;
     background: white;
-    height: 480px;
+    height: 100%;
     padding: 25px 30px;
     border-radius: 10px;
 }
@@ -158,7 +158,6 @@ form .consultation-details .input-box {
     border: none;
     font-size: 18px;
     border-radius: 7px;
-    margin-top: -20px;
     margin-right: 10px;
 }
 
