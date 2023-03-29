@@ -171,8 +171,11 @@ function objPull() {
 function planPull() {
     // create ul element and set the attributes.
     var elem = document.querySelectorAll(".planText");
+    var categoryElem = document.querySelectorAll("#opt")
     lastElem = elem[elem.length - 1];
+    lastCategoryElem = categoryElem[categoryElem.length - 1];
     lastElem.remove();
+    lastCategoryElem.remove();
 }
 
 

@@ -22,7 +22,7 @@
 
     <div class="content">
         <h1>EDIT CONSULTATION</h1>
-        
+
         <div class="container">
 
             <form action="/patient/<%=patientId%>/editConsultation/<%=currConsult._id%>?_method=patch" method="post">
@@ -38,7 +38,7 @@
                     </script>
                 </div>
                 <div class="consultation-details">
-                    
+
 
                     <div class="input-box">
                         <span class="details">Subjective Findings</span>
@@ -87,16 +87,17 @@
 
                     <div class="input-box">
                         <span class="details">Plan</span>
-                        <% for(let finding of currConsult.plan) {%> 
+                        <% for(let finding of currConsult.plan) {%>
                             <select id="opt" name="category">
                                 <option value="<%=finding.category%>" selected hidden>
                                     <%=finding.category%>
                                 </option>
-                                <option value="Medications">Medication</option>
+                                <option value="Medications">Medications</option>
                                 <option value="Laboratory">Lab</option>
                                 <option value="Others">Others</option>
                             </select>
-                            <textarea id="plan" name="plandescription" class="planText" required><%=finding.description%></textarea>
+                            <textarea id="plan" name="plandescription" class="planText"
+                                required><%=finding.description%></textarea>
                             <% } %>
                                 <div id="planCont"></div>
                                 <div class="plan">
@@ -121,12 +122,7 @@
                             
                         </div>
                         -->
-                    <div class="upload-file">
-                        <input type="file" id="upload" value="Upload File" hidden>
-                        <label for="upload">
-                            <p><i class="fa-solid fa-upload"></i> Upload File</p>
-                        </label>
-                    </div>
+
 
                     <!-- <div class="plan">
                         <button class="btn" id="plus"><i class="fa-solid fa-circle-plus"></i></button>
