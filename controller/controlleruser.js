@@ -8,12 +8,16 @@ const controllerUser = {
 
     login: async (req, res) => {
         if (!req.session.username) {
+            console.log(req.session.username);
             res.render('user/login');
         }
         else {
-            res.redirect(`/user/${req.session.username}`)
+            // tried to place rendering of login page everytime user changes details
+            console.log('bruh');
+            // res.redirect(`/user/${req.session.username}`)
+            res.render('user/login');
         }
-    },
+    }, 
 
 
     checkLogin: async (req, res) => {
@@ -129,6 +133,86 @@ const controllerUser = {
         }
         res.redirect('/user/login');
     },
+
+    //Edit user profile
+    editUser: async (req, res) => {
+        if (req.session.username) {
+            var { username } = req.params;
+            var currentUser = await User.findOne({ 'username': username });
+            if (currentUser) {
+                console.log(currentUser);
+                res.render('user/editProfile', { currentUser });
+            }
+            else {
+                console.log(currentUser);
+                console.log('Fail');
+                res.redirect('/user/login');
+            }
+        }
+        else {
+            message = 'Login to proceed.';
+            console.log('Login to proceed.');
+            res.redirect('/user/login');
+        }
+    },
+
+    //Update user profile in db
+    updateUser: async (req, res) => {
+        var users = await User.find()
+            .then(async () => {
+                var data = req.body;
+                const salt = bcrypt.genSaltSync(saltRounds);
+                const hash = bcrypt.hashSync(req.body.new_password, salt);
+                console.log(req.body.new_username)
+                console.log(req.body.new_password)
+                var newUser = new User({
+                    username: req.body.new_username,
+                    password: hash,
+                    email: req.body.new_email
+                });
+                return newUser;
+            })
+            
+            .then(async (newUser) => {
+                console.log(newUser);
+                if (newUser) {
+                    var query = {'username': req.session.username};
+                    console.log(newUser);
+                    User.findOneAndUpdate(query,
+                        {
+                            username: newUser.username,
+                            password: newUser.password,
+                            email: newUser.email
+                
+                        }, function (err, result) {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+                    return newUser;
+            
+                }
+                else {
+                    return null;
+                }
+            })
+            .then(async (newUser) => {
+                // if (newUser) {
+                    res.redirect('/');
+                // }
+                // else {
+                //     console.log("wrong");
+                //     res.redirect('/user/signup');
+                // }
+            })
+            .catch((err) => {
+                console.log(err);
+
+                res.redirect('/user/signup');
+            })
+    },
+
+    
 
 }
 

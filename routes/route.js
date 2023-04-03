@@ -46,6 +46,9 @@ app.get('/user/signup', controllerUser.signup);
 app.post('/user/signup', controllerUser.addUser);
 app.get('/user/:username', controllerUser.userPage);
 app.get('/logout', controllerUser.logout);
+app.get('/user/:username/edit', controllerUser.editUser);
+app.post('/user/updateProfile', controllerUser.updateUser);
+// app.get('/user/relogin', controllerUser.relogin);
 
 //Records section
 app.get('/patient/new', controllerPatient.createPatient);

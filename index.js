@@ -50,6 +50,11 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '/public')));
 
+// make username available in all templates
+app.use(function(req, res, next) {
+    res.locals.username = req.session.username;
+    next();
+  });
 
 app.listen(3000, () => {
     console.log('I AM ON PORT 3000');
