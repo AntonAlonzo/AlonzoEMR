@@ -123,7 +123,7 @@ const controllerConsultation = {
             const { consultationId } = req.params;
             console.log(req.params.patientId);
             const data = req.body;
-// asdka
+            // asdka
             console.log(req.body.plandescription)
             console.log(req.body.category)
 
@@ -153,15 +153,28 @@ const controllerConsultation = {
                 newData.plan.push(planData[i]);
                 console.log(planData[i]);
             }
-// ksjdhf   
-            
-            var { date, subjective, assessment, objective} = data;
+            // ksjdhf   
+
+
+
+            var { date, subjective, assessment, objective } = data;
+
+            if (subjective == undefined) {
+                subjective = "";
+            }
+            if (assessment == undefined) {
+                assessment = "";
+            }
+            if (objective == undefined) {
+                objective = "";
+            }
+
             var newplan = newData.plan
-            console.log(newplan)
+            console.log(`New subjective: ${subjective}`)
             // await Consultation.findByIdAndUpdate(consultationId, { date, subjective, assessment, objective, newplan })
             await Consultation.findByIdAndUpdate(consultationId,
                 { date, subjective, assessment, objective, plan: newplan }
-              );
+            );
             res.redirect(`/patient/${req.params.patientId}`);
         }
         else {

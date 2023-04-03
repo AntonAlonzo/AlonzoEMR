@@ -17,7 +17,7 @@ const controllerUser = {
             // res.redirect(`/user/${req.session.username}`)
             res.render('user/login');
         }
-    }, 
+    },
 
 
     checkLogin: async (req, res) => {
@@ -172,25 +172,25 @@ const controllerUser = {
                 });
                 return newUser;
             })
-            
+
             .then(async (newUser) => {
                 console.log(newUser);
                 if (newUser) {
-                    var query = {'username': req.session.username};
+                    var query = { 'username': req.session.username };
                     console.log(newUser);
                     User.findOneAndUpdate(query,
                         {
                             username: newUser.username,
                             password: newUser.password,
                             email: newUser.email
-                
+
                         }, function (err, result) {
                             if (err) {
                                 console.log(err);
                             }
                         });
                     return newUser;
-            
+
                 }
                 else {
                     return null;
@@ -198,7 +198,7 @@ const controllerUser = {
             })
             .then(async (newUser) => {
                 // if (newUser) {
-                    res.redirect('/');
+                res.redirect('/');
                 // }
                 // else {
                 //     console.log("wrong");
@@ -212,7 +212,7 @@ const controllerUser = {
             })
     },
 
-    
+
 
 }
 

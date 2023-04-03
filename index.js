@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const bodyParser = require("body-parser");
+const nocache = require("nocache");
 
 
 if (process.env.STATUS === 'development') {
@@ -41,6 +42,13 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use(function (req, res, next) {
+    res.locals.username = req.session.username;
+    next();
+});
+
+app.use(nocache())
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'))
@@ -50,11 +58,6 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, '/public')));
 
-// make username available in all templates
-app.use(function(req, res, next) {
-    res.locals.username = req.session.username;
-    next();
-  });
 
 app.listen(3000, () => {
     console.log('I AM ON PORT 3000');

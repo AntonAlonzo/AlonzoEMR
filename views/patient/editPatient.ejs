@@ -56,8 +56,9 @@
 
                         <div class="input-box">
                             <span class="details">Contact Details</span>
-                            <input type="text" value="<%= patient.contactNumber %>" name="contactNumber"
-                                autocomplete="off" value="+63" required>
+                            <input type="text" value="<%= patient.contactNumber %>" id="contactNumber"
+                                name="contactNumber" autocomplete="off" required minlength="11" maxlength="11">
+                            <span id="error"></span>
                         </div>
 
                         <div class="input-box">
@@ -90,5 +91,7 @@
             </div>
 
 </body>
+
+<script src="/js/editPatient.js"></script>
 
 </html>
