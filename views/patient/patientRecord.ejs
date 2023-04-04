@@ -313,8 +313,9 @@
                                                 enctype="multipart/form-data" method="POST">
                                                 <input type="text" name="title" id="title" placeholder="Name of File"
                                                     required>
-                                                <input type="file" id="myFile" name="myFile" required>
-                                                <input class="admin__submit above-option" type="submit" />
+                                                <input type="file" id="myFile" name="myFile" required hidden >
+                                                <label for="myFile" id="ltitle"><i class="fa-solid fa-upload"></i> Upload File</label> <br>
+                                                <input id="sub" class="admin__submit above-option" type="submit" />
                                             </form>
                                         </div>
 

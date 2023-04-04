@@ -268,3 +268,31 @@ h3 {
 .close {
     cursor: pointer;
 }
+
+form #title{
+    font-family: 'Rubik', sans-serif;
+    width: 150px;
+    height: 25px;
+    border-radius: 5px;
+    border-style: dashed;
+}
+
+form #ltitle {
+    color: #F1F4FE;
+    padding: 4px;
+    background-color: #192039;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+form #sub{
+    width: 100px;
+    height: 25px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 5px;
+    background-color: #287EFC;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 10px;
+}
