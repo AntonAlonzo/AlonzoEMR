@@ -296,3 +296,58 @@ form #sub{
     font-size: 15px;
     margin-top: 10px;
 }
+
+.confirm-box {
+    border-radius: 15px;
+    background: #fff;
+    height: 35%;
+    padding: 20px;
+}
+
+
+.close {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #192039;
+    color: #d6d6d6;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    float: right;
+}
+
+.top {
+    background-color: #287EFC;
+}
+
+.confirm-box button{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    background-color: #888888;
+    color: #F1F4FE;
+    
+}
+
+.confirm-box button:hover {
+    cursor: pointer;
+}
+
+.confirm-box h2{
+    font-size: 35px;
+}
+  
+#unconfirm {
+    background-color: #192039;
+}
+
+#yes {
+    background-color: #287EFC;
+}
+
