@@ -9,13 +9,15 @@ const controllerUser = {
     login: async (req, res) => {
         if (!req.session.username) {
             console.log(req.session.username);
-            res.render('user/login');
+            var message = false
+            res.render('user/login', { message });
         }
         else {
             // tried to place rendering of login page everytime user changes details
             console.log('bruh');
             // res.redirect(`/user/${req.session.username}`)
-            res.render('user/login');
+            var message = false
+            res.render('user/login', { message });
         }
     },
 
@@ -31,8 +33,8 @@ const controllerUser = {
 
                     bcrypt.compare(req.body.password, user.password, async function (err, isMatch) {
                         if (!isMatch) {
-                            message = 'Passwords do not match.';
-                            res.redirect('/user/login');
+                            var message = true;
+                            res.render('user/login', { message });
                         }
                         else {
                             req.session.username = req.body.username;
@@ -45,7 +47,8 @@ const controllerUser = {
             .catch(() => {
                 message = 'No user found.';
                 console.log('No user found');
-                res.redirect('/user/login');
+                var message = true;
+                res.render('user/login', { message });
             });
     },
 

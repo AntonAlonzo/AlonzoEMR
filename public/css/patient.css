@@ -269,7 +269,7 @@ h3 {
     cursor: pointer;
 }
 
-form #title{
+form #title {
     font-family: 'Rubik', sans-serif;
     width: 150px;
     height: 25px;
@@ -285,7 +285,7 @@ form #ltitle {
     font-size: 18px;
 }
 
-form #sub{
+form #sub {
     width: 100px;
     height: 25px;
     font-family: 'Rubik', sans-serif;
@@ -322,7 +322,7 @@ form #sub{
     background-color: #287EFC;
 }
 
-.confirm-box button{
+.confirm-box button {
     width: 100px;
     height: 30px;
     border-radius: 5px;
@@ -332,17 +332,17 @@ form #sub{
     font-family: 'Rubik', sans-serif;
     background-color: #888888;
     color: #F1F4FE;
-    
+
 }
 
 .confirm-box button:hover {
     cursor: pointer;
 }
 
-.confirm-box h2{
+.confirm-box h2 {
     font-size: 35px;
 }
-  
+
 #unconfirm {
     background-color: #192039;
 }
@@ -350,4 +350,3 @@ form #sub{
 #yes {
     background-color: #287EFC;
 }
-

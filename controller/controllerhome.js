@@ -9,7 +9,8 @@ const controllerHome = {
         }
         else {
             console.log('Login to proceed.');
-            res.redirect('/user/login');
+            var message = false
+            res.render('user/login', { message });
         }
     }
 }

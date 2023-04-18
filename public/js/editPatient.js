@@ -1,5 +1,5 @@
 let timer,
-    timeoutVal = 1000;
+    timeoutVal = 300;
 const contact = document.getElementById("contactNumber");
 const error = document.getElementById('error');
 

@@ -27,6 +27,9 @@
             <div class="row button">
                 <input type="submit" value="SIGN IN">
             </div>
+            <%if(message==true) {%>
+                <span style='color: red; '> Username and password does not match</span>
+                <% } %>
         </form>
     </div>
 </body>
